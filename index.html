@@ -1,0 +1,1973 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>📘 Les Cursus & Formations</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap');
+  :root{
+    --bg:#f4f7f3;--surface:#ffffff;--surface2:#f1f5f1;--text:#1b1f1c;--muted:#556059;--border:#d9e1d8;--shadow:0 8px 20px rgba(23,32,23,.08);
+    --green1:#1f6d4a;--green2:#1a5a3f;--blue1:#244a74;--blue2:#1c3d62;--red1:#7a2b2b;--red2:#5e2121;--amber1:#8b5a1d;--amber2:#6e4516;--purple1:#5a2d7a;--purple2:#47245f;--cyan1:#1f6764;--cyan2:#1a5552;
+    --card-bg:#ffffff;--card-open:#f5f8f5;--card-border:#d3ded5;--card-title:#1f4d34;--card-text:#233128;--card-muted:#5c6e63;--card-accent:#2f7a56;--mini-title-bg:#e8f1ec;--mini-title-text:#1f4d34;
+    --toc-bg:#e1e4ff;--toc-border:#cdd2f3;
+  }
+  *{box-sizing:border-box}
+  body{margin:20px;background:linear-gradient(180deg,#f7faf6 0%,#eef3ee 60%,#f7faf6 100%);color:var(--text);font-family:"IBM Plex Sans","Trebuchet MS",sans-serif;line-height:1.55}
+  h1{margin:0 0 6px;font-size:28px;font-family:"IBM Plex Serif","Georgia",serif}
+  .subtitle{margin:0 0 14px;color:var(--muted)}
+  .header{padding:18px;border-radius:14px;background:linear-gradient(145deg,#f7fbf6,#eef4ee 60%,#f3f7f4);border:1px solid var(--border);box-shadow:var(--shadow)}
+  .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
+  .toc1{margin-top:15px;margin-bottom:15px;display:flex;flex-wrap:wrap;gap:15px}
+  .summary-sub{display:block;font-weight:400;font-size:15px}
+  .toc1 a{color:#3c368d;text-decoration:none;border:1px solid rgba(0,0,0,.08);background:rgba(255,255,255,.82);padding:10px 20px;border-radius:999px;font-weight:600;font-size:15px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:0 6px 16px rgba(20,30,22,.12),inset 0 0 0 1px rgba(255,255,255,.5);transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+  .toc1 a:hover{transform:translateY(-1px);background:rgba(255,255,255,.95);border-color:rgba(0,0,0,.12);box-shadow:0 10px 20px rgba(20,30,22,.16),inset 0 0 0 1px rgba(255,255,255,.65)}
+  .toc1 a:active{transform:translateY(0);box-shadow:0 6px 16px rgba(20,30,22,.08),inset 0 0 0 1px rgba(255,255,255,.25)}
+  .toc1 a[data-target="mg"]{color:#1f5c3e}
+  .toc1 a[data-target="mu"]{color:#7a3f06}
+  .toc1 a[data-target="dcd"]{color:#4a2a73}
+  .toc1 a[data-target="incendie"]{color:#8a3a0f}
+  .toc1 a[data-target="lead-terrain"]{color:#1b5c52}
+  .toc1 a[data-target="formateur-ps"]{color:#4a5d1c}
+  .toc1 a[data-target="secours-aerien"]{color:#274c9b}
+  .toc1 a[data-target="secours-maritime"]{color:#11697c}
+  .toc1 a[data-target="psychologie"]{color:#5b3a9b}
+  .toc1 a[data-target="niv2-cardio"]{color:#1e6a73}
+  .toc1 a[data-target="niv2-neuro"]{color:#3c368d}
+  .toc1 a[data-target="niv2-kine"]{color:#1f6a3c}
+  .toc1 a[data-target="niv2-transplant"]{color:#8a4b00}
+  .toc1 a[data-target="niv2-legale"]{color:#3b4758}
+  .toc1 a[data-target="niv2-trauma"]{color:#2e5d9a}
+  .toc1 a[data-target="niv3-module1"]{color:#0f766e}
+  .toc1 a[data-target="niv3-module2"]{color:#7c3aed}
+  .toc1 a[data-target="niv3-module3"]{color:#b45309}
+  .toc1 a[data-target="niv3-module4"]{color:#0f172a}
+  [data-accordion]{margin:16px 0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
+  .summary{padding:14px 16px;font-weight:600;font-size:20px;cursor:pointer;user-select:none;color:var(--text);font-family:"IBM Plex Serif","Georgia",serif}
+  .main-section{overflow:visible}
+  .section-summary{position:sticky;top:0;z-index:90;box-shadow:0 6px 16px rgba(20,30,22,.06)}
+  [data-accordion].open>.summary{border-bottom:1px solid var(--border)}
+  .content{padding:14px 16px;background:var(--surface2)}
+  .split{display:grid;gap:12px}
+  @media(min-width:900px){.split{grid-template-columns:1fr 1fr}}
+  .cards{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px}
+  .card{background:#0f1214;border:1px solid #1e2328;border-radius:12px;padding:12px 14px;display:flex;gap:10px;align-items:flex-start}
+  .alert{background:#2a1a12;border-left:4px solid #f97316;color:#fcd9b6;border-radius:10px;padding:10px 12px;font-weight:700}
+  .minor{color:var(--muted)}
+  a{color:#a7f3c6}
+
+  /* Titres secondaires colorés */
+  .h-blue{color:#cfe2ff;font-weight:800;margin:0 0 8px}
+  .h-green{color:#c8f3d5;font-weight:800;margin:0 0 8px}
+  .h-amber{color:#ffe0af;font-weight:800;margin:0 0 8px}
+  .h-red{color:#ffc2c2;font-weight:800;margin:0 0 8px}
+  .h-cyan{color:#b8fff4;font-weight:800;margin:0 0 8px}
+
+  /* Thèmes par catégorie */
+  .t-green>.summary{background:linear-gradient(90deg,var(--green1),var(--green2))}
+  .t-blue>.summary{background:linear-gradient(90deg,var(--blue1),var(--blue2))}
+  .t-red>.summary{background:linear-gradient(90deg,var(--red1),var(--red2))}
+  .t-amber>.summary{background:linear-gradient(90deg,var(--amber1),var(--amber2))}
+  .t-purple>.summary{background:linear-gradient(90deg,var(--purple1),var(--purple2))}
+  .t-cyan>.summary{background:linear-gradient(90deg,#ffeedb,#ffe3c2)}
+
+  /* Tableau (grille salariale) */
+  .category-cards{display:flex;flex-direction:column;gap:12px}
+  .category-card{margin:0;border:1px solid var(--card-border);border-radius:14px;background:var(--card-bg);box-shadow:0 6px 16px rgba(20,30,22,.06);scroll-margin-top:120px}
+  .category-card>.summary{position:relative;background:var(--toc-bg);color:var(--card-title);font-size:18px;font-weight:500;padding-left:20px}
+  .category-card>.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--card-accent)}
+  .category-card.open{background:var(--card-open)}
+  .category-card.open>.summary{border-bottom:1px solid var(--card-border)}
+  .category-body{padding:12px 14px}
+  .card-rows{display:flex;flex-direction:column;gap:12px}
+  .card-row{display:grid;gap:12px}
+  .row-1{grid-template-columns:1fr}
+  .row-2{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .row-3{grid-template-columns:repeat(3,minmax(0,1fr))}
+  .row-4{grid-template-columns:repeat(4,minmax(0,1fr))}
+  @media(max-width:900px){
+    .row-4{grid-template-columns:repeat(2,minmax(0,1fr))}
+  }
+  @media(max-width:640px){
+    .row-2,.row-3,.row-4{grid-template-columns:1fr}
+  }
+  .mini-card{margin:0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;box-shadow:none}
+  .mini-card>.summary{position:relative;background:var(--toc-bg);color:var(--card-title);font-weight:500;font-size:16px;padding:12px 14px 12px 18px;cursor:pointer}
+  .mini-card>.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--card-accent)}
+  .mini-card.open{background:var(--card-open)}
+  .mini-card.open>.summary{border-bottom:1px solid var(--card-border)}
+  .mini-body{padding:10px 14px;color:var(--card-text)}
+  .mini-list{margin:0;padding:0;color:var(--card-muted);font-size:16px}
+  .mini-list p{margin:4px 0}
+  blockquote{margin:8px 0 0;padding:8px 10px;border-left:3px solid var(--card-accent);background:var(--card-open);border-radius:8px;color:var(--card-muted);font-size:13px}
+  .category-card:hover,.mini-card:hover{border-color:var(--card-accent)}
+  .board{border:1px solid var(--card-border);border-radius:12px;overflow:hidden;background:var(--card-bg)}
+  .board-header{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#122118;color:var(--card-title);font-weight:600}
+  .table-header{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:10px 14px;background:#0f1a14;color:var(--card-muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
+  .group-row{display:flex;align-items:center;gap:8px;padding:10px 14px;font-weight:600;color:var(--card-title);background:#14261d;border-top:1px solid var(--card-border)}
+  .group-row.dispatch{background:#15261b}
+  .group-row.terrain{background:#13241a}
+  .data-row{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:12px 14px;border-top:1px solid var(--card-border);background:var(--card-bg)}
+  .section-pill{display:inline-flex;align-items:center;gap:6px;padding:6px 10px;border-radius:999px;border:1px solid var(--card-border);background:#0f1a14;color:var(--card-title);font-size:12px}
+  .section-pill.role{background:#112015}
+  .section-pill.dispatch{background:#112118}
+  .section-pill.tasks{background:#101d15}
+  .section-pill.before{background:#101c14}
+  .section-pill.on-site{background:#0f1b14}
+  .section-pill.evac{background:#0f1a14}
+  .section-pill.hospital{background:#0f1a14}
+  .desc-text{color:var(--card-text);font-size:13px;line-height:1.55}
+  .img-500{max-width:500px;width:100%;height:auto;display:block}
+  .img-center{display:block;margin:8px auto;max-width:100%;height:auto}
+  .sub-title{margin:14px 0 6px;padding:6px 10px;border-left:3px solid var(--card-accent);background:var(--mini-title-bg);color:var(--card-title);font-weight:600;font-size:12px;text-transform:uppercase;letter-spacing:.04em;border-radius:8px}
+  .info-table{width:100%;border-collapse:collapse;margin:8px 0;color:var(--card-text);font-size:13px}
+  .table-narrow{max-width:720px;margin:8px auto}
+  .table-itt{font-size:15px}
+  .info-table th,.info-table td{border:1px solid var(--card-border);padding:8px 10px;text-align:left;vertical-align:top}
+  .info-table thead th{background:var(--mini-title-bg);color:var(--card-title);font-weight:600}
+  @media(max-width:900px){
+    .table-header,.data-row{grid-template-columns:1fr}
+    .col-section{margin-bottom:6px}
+  }
+  .r1{background:#065f46}.r2{background:#047857}.r3{background:#0369a1}
+  .r4{background:#2563eb}.r5{background:#7c3aed}.r6{background:#9333ea}
+  .r7{background:#b91c1c}.r8{background:#be123c}.r9{background:#831843}
+  [data-accordion]>.content{display:none}
+  .category-card>.category-body{display:none}
+  .mini-card>.mini-body{display:none}
+  [data-accordion].open>.content{display:block}
+  .category-card.open>.category-body{display:block}
+  .mini-card.open>.mini-body{display:block}
+  #mg{--card-bg:#f6fbf7;--card-open:#eef7f1;--card-border:#cfe1d8;--card-title:#1f5c3e;--card-text:#223529;--card-muted:#5c6e63;--card-accent:#2f8a5f;--mini-title-bg:#e2f1e8;--mini-title-text:#1f5c3e}
+  #mu{--card-bg:#fff8f2;--card-open:#fff1e6;--card-border:#f2d6bd;--card-title:#7a3f06;--card-text:#3b2a1a;--card-muted:#7a5b43;--card-accent:#e07a2f;--mini-title-bg:#ffe7d1;--mini-title-text:#7a3f06}
+  #dcd{--card-bg:#f7f5fb;--card-open:#f0ecf7;--card-border:#d9d0e8;--card-title:#4a2a73;--card-text:#312b3d;--card-muted:#6a5b7a;--card-accent:#7a50c5;--mini-title-bg:#eadff6;--mini-title-text:#4a2a73}
+  #incendie{--card-bg:#fff7f0;--card-open:#ffefdf;--card-border:#f1d4be;--card-title:#8a3a0f;--card-text:#3c2a1e;--card-muted:#7a5b45;--card-accent:#e0762f;--mini-title-bg:#ffe6d2;--mini-title-text:#8a3a0f}
+  #lead-terrain{--card-bg:#f0fbf9;--card-open:#e6f6f3;--card-border:#cfe6e1;--card-title:#1b5c52;--card-text:#243533;--card-muted:#60736f;--card-accent:#1e8a7a;--mini-title-bg:#def2ee;--mini-title-text:#1b5c52}
+  #formateur-ps{--card-bg:#f6faf0;--card-open:#eef6e4;--card-border:#d9e6c9;--card-title:#4a5d1c;--card-text:#2f3a1e;--card-muted:#6d7a55;--card-accent:#7aa63a;--mini-title-bg:#e8f2da;--mini-title-text:#4a5d1c}
+  #secours-aerien{--card-bg:#f3f7ff;--card-open:#ebf1ff;--card-border:#cfdaf3;--card-title:#274c9b;--card-text:#26324a;--card-muted:#5f6f8c;--card-accent:#4c6fd9;--mini-title-bg:#e2ebff;--mini-title-text:#274c9b}
+  #secours-maritime{--card-bg:#f0fbff;--card-open:#e6f7ff;--card-border:#cde7f2;--card-title:#11697c;--card-text:#20343b;--card-muted:#5a7480;--card-accent:#0891b2;--mini-title-bg:#dff3fb;--mini-title-text:#11697c}
+  #psychologie{--card-bg:#f6f3ff;--card-open:#efe9ff;--card-border:#ddd3f5;--card-title:#5b3a9b;--card-text:#2f2b3d;--card-muted:#6b5f86;--card-accent:#8b5cf6;--mini-title-bg:#e9e1ff;--mini-title-text:#5b3a9b}
+  #niv2-cardio{--card-bg:#f0fbfb;--card-open:#e6f7f7;--card-border:#cfe6e6;--card-title:#1e6a73;--card-text:#233338;--card-muted:#5f7478;--card-accent:#2aa6b1;--mini-title-bg:#dff3f4;--mini-title-text:#1e6a73}
+  #niv2-neuro{--card-bg:#f1f2ff;--card-open:#e7e9ff;--card-border:#cfd3f7;--card-title:#3c368d;--card-text:#2a2e45;--card-muted:#5e6584;--card-accent:#4f46e5;--mini-title-bg:#e1e4ff;--mini-title-text:#3c368d}
+  #niv2-kine{--card-bg:#f2fbf4;--card-open:#e9f7ee;--card-border:#cfe7d5;--card-title:#1f6a3c;--card-text:#24352a;--card-muted:#5f7366;--card-accent:#16a34a;--mini-title-bg:#def3e5;--mini-title-text:#1f6a3c}
+  #niv2-transplant{--card-bg:#fff7ed;--card-open:#ffefdc;--card-border:#f0d4b3;--card-title:#8a4b00;--card-text:#3b2c1f;--card-muted:#7b5f47;--card-accent:#d97706;--mini-title-bg:#ffe5c7;--mini-title-text:#8a4b00}
+  #niv2-legale{--card-bg:#f4f6f9;--card-open:#eceff3;--card-border:#d6dbe4;--card-title:#3b4758;--card-text:#28313c;--card-muted:#66707d;--card-accent:#64748b;--mini-title-bg:#e2e7ef;--mini-title-text:#3b4758}
+  #niv2-trauma{--card-bg:#f2f7ff;--card-open:#e8f1ff;--card-border:#cddcf0;--card-title:#2e5d9a;--card-text:#263247;--card-muted:#617089;--card-accent:#4e85d8;--mini-title-bg:#e1ecff;--mini-title-text:#2e5d9a}
+  #niv3-module1{--card-bg:#f1fbf9;--card-open:#e7f6f3;--card-border:#cfe6e1;--card-title:#0f766e;--card-text:#233635;--card-muted:#5c7371;--card-accent:#0f766e;--mini-title-bg:#def2ee;--mini-title-text:#0f766e}
+  #niv3-module2{--card-bg:#f6f2ff;--card-open:#efe9ff;--card-border:#ddd3f5;--card-title:#7c3aed;--card-text:#2f2b3d;--card-muted:#6b5f86;--card-accent:#7c3aed;--mini-title-bg:#e9e1ff;--mini-title-text:#7c3aed}
+  #niv3-module3{--card-bg:#fff7ed;--card-open:#ffefdc;--card-border:#f0d4b3;--card-title:#b45309;--card-text:#3b2c1f;--card-muted:#7b5f47;--card-accent:#b45309;--mini-title-bg:#ffe5c7;--mini-title-text:#b45309}
+  #niv3-module4{--card-bg:#f5f7fb;--card-open:#eef1f7;--card-border:#d6dde8;--card-title:#0f172a;--card-text:#1f2937;--card-muted:#64748b;--card-accent:#0f172a;--mini-title-bg:#e7ecf3;--mini-title-text:#0f172a}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>📘 Les Cursus & Formations</h1><br>
+  <p class="subtitle"><strong>Bienvenue à toi, <br>Ici tu trouveras toutes les informations relatives aux cursus et formations dispo ! <em>et même des fiches pratiques 👌</em></strong></p>
+</div>
+<!-- ======================= Service ======================= -->
+<div data-accordion id="service" class="t-purple main-section">
+  <div class="summary section-summary">
+    <span class="summary-toggle">
+    <p>🔑 Cursus obligatoire -  <em>le starter pack</em></p></span>
+    <span class="summary-sub">
+      <span class="toc1">
+        <a class="category-link" href="#mg" data-target="mg">🩺 Médecine Générale</a>
+        <a class="category-link" href="#mu" data-target="mu">🚑 Médecine d'urgence</a>
+        <a class="category-link" href="#dcd" data-target="dcd">⚰️ Procédure en cas de décès</a>
+      </span>
+    </span>
+  </div>
+
+  <div class="content">
+    <div class="category-cards">
+      <div data-accordion id="mg" class="category-card">
+        <div class="summary">🩺 Médecine Générale</div>
+        <div class="category-body">
+          <div class="card-rows">
+            <div class="card-row row-2">
+<div data-accordion class="mini-card">
+                <div class="summary">Soins légers</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>Accompagner le patient en salle de consultation<br>🔸 Prendre la carte de santé et regarder son dossier médical</p>
+              <p>Constater les blessures de la personne<br>🔸 Interroger et examiner le patient (recherche de traumatisme, trace de ceinture, coups, etc.)</p>
+              <p>Appliquer les soins en conséquence<br>🔸 Desinfection, crème cicatrisante, crème anti-inflammatoire, poche de glace etc.</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Grippe</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>Changement de tenue -> Enfiler la tenue Hazmat</p>
+              <p>Prendre l'appel et sortir un véhicule -> Mettre à jour le Dispatch</p>
+              <p>Les soins<br>🔸 Eloigner la personne grippée pour éviter toute contamination d'autres personnes aux alentours<br>🔸 Injecter le serum</p>
+              <p>Prendre la carte de santé<br>🔸 Vérifier le dossier et ajouter une entrée 'Grippe' sur le panel</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Don du sang</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>Installation<br>🔸 S’installer en salle de consultation<br>🔸 Prendre la carte de santé</p>
+              <p>Vérifier l’éligibilité<br>🔸 Alcool / Stupéfiants : 12h depuis la dernière consommation<br>🔸 Grippe : 24h<br>🔸 Anesthésie / inconscience : 24h<br>🔸 Relation sexuelle à risque : 24h<br>🔸 Tatouages / piercings : 24h</p>
+              <p>Préparation<br>🔸 Vérifier que la personne ait bien bu et mangé.</p>
+              <p>Ponction<br>🔸 Procéder à la ponction sanguine</p>
+              <p>Fin<br>🔸 Remercier la personne et proposer un snack</p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Visite Post-opératoire - Postop</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸S'installer en salle d'opération et lire le dossier du patient</p>
+              <p>🔸Recueillir l'expérience du patient (s'il reste des douleurs ou pas...)</p>
+              <p>🔸Mener les examens demandés dans le dossier médical</p>
+              <p>🔸Au besoin, compléter les soins</p>
+              <p>🔸Facturer la personne & compléter le dossier</p>
+              <p>🔸Retirer les ITT de la personne (Attention : les ITT ne peuvent être retirées qu’au sein du LSMC sud ou de la clinique nord) Si aucun médecin n’est disponible, Amandine peut les retirer.</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-4">
+              <div data-accordion class="mini-card">
+                <div class="summary">Fêlure</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Confirmer la fêlure avec une radio ou un scanner</p>
+              <p>🔸Mettre en place une attelle rigide ou un corset en fonction de l'emplacement</p>
+              <p>🔸Durée ITT</p>
+              <p>🔸Post-op retrait du matériel si absence de douleurs</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Fracture nette</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Confirmer la fracture avec une radio ou un scanner</p>
+              <p>🔸Pose du matériel (plâtre, corset...) adapté</p>
+              <p>🔸Durée ITT</p>
+              <p>🔸Post-op retrait du matériel si absence de douleurs</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Luxation</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Confirmer la direction et l’angle de luxation avec une radio ou un scanner</p>
+              <p>🔸Remettre en place l’articulation</p>
+              <p>🔸Durée ITT</p>
+              <p>🔸Post-op retrait du matériel si absence de douleurs</p>
+              <p>🔸Au besoin, proposer un suivi en kinésithérapie</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Coups & Hématomes</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Examen, nettoyage et désinfection</p>
+              <p>🔸Bandage, pansement, strap, etc.</p>
+              <p>🔸Point de suture si la plaie est grande</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-3">
+              <div data-accordion class="mini-card">
+                <div class="summary">Brûlure 1er degré</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Refroidir doucement la peau</p>
+              <p>🔸Nettoyer la brûlure</p>
+              <p>🔸Hydrater la peau avec de la crème</p>
+              <p>🔸Mettre pansements / bandages, au besoin.</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Brûlure 2nd degré</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Refroidir doucement la peau</p>
+              <p>🔸Nettoyer la brûlure</p>
+              <p>🔸Hydrater la peau à l'aide de Tulles grasses</p>
+              <p>🔸Bandages de protection</p>
+              <p>🔸Mettre des ITT</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Noyade</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>Scanner des poumons pour confirmer la présence d'eau</p>
+              <p>Localisation de l'eau<br>🔸 Dans les poumons : placement sous oxygènhe haut débit<br>🔸 Autour des poumons : ponction pleurale sous anesthésie générale</p><br>
+              <p>🔸Contrôle de la respiration</p>
+              <p>🔸Traitement antifongiques</p>
+              <p>🔸Durée ITT</p>
+              <p>🔸Post-op test respiratoire</p>
+              <br>
+              <p>💵 Facture : soins + Scan/radio/irm</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-3">
+              <div data-accordion class="mini-card">
+                <div class="summary">Coma Ethylique</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Faire souffler dans un Éthylotest. Il est possible aussi de réaliser une analyse de sang en supplément</p>
+              <p>🔸Lavage d'estomac si alcoolémie importante (>2.00gr)</p>
+              <p>🔸Hydrater le patient</p>
+              <p>🔸Proposer un accompagnement psychologique</p>
+              <br>
+              <p>💵 Facture : soins</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Overdose</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Dépistage de drogue et/ou analyse de sang</p>
+              <p>🔸Injection de Naloxone</p>
+              <p>🔸Test cognitif, visuel etc</p>
+              <p>🔸Accompagnement psychologique proposé</p>
+              <p>🔸Transmettre l'échantillon de stupéfiant aux forces de l'ordre</p>
+              <p>🔸Noter l'utilisation du naloxone dans le dossier</p>
+              <br>
+              <p>💵 Facture : soins + Naloxone</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">BPM élevé</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸Vérification du Pouls</p>
+              <p>🔸Vérification du dossier patient pour vérifier qu'il n'y a pas de contre-indications.</p>
+              <p>🔸Faire baisser le pouls en administrant de la Morphine</p>
+              <p>🔸Noter l'utilisation de la Morphine dans le dossier</p>
+              <br>
+              <p>💵 Facture : soins + Morphine</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Visite médicale</div>
+                <div class="mini-body">
+            <div class="mini-list">
+              <p>🔸S’installer en salle de consultation et ouvrir le dossier de la personne</p>
+              <p>🔸Créer l’entrée “Visite médicale” sur le panel</p>
+              <p>🔸Expliquer au patient les différents tests qu’il va suivre</p><br>
+              <p>Réaliser les différents tests :<br>🔸 Test de vue (affichette de lettres, couleurs d’objets...)<br>🔸 Test d’audition (placer la personne au fond puis s’éloigner en comptant ou parlant puis recueillir la dernière chose entendue)<br>🔸 Test urinaire et sanguin (échantillons à analyser en salle d’analyse du rez de chaussée)<br>🔸 Test des paramètres vitaux (le médecin prend les signes vitaux, le patient réalise un exercice sportif, le médecin reprend les signes vitaux)</p>
+              <p>Discussion avec le patient autour de sa situation actuelle (travail, vie perso etc) afin de discuter et de vérifier que tout va bien.</p>
+              <p>Noter la validation ou non de la visite dans le dossier du patient (dans l’entrée patient et dans les notes en bas à droite)</p>
+              <p>Validation de la visite médicale :</p>
+              <p>🔸 Mettre à jour le dossier patient avec le tag VM (date)</p>
+              <p>🔸 Envoi d'un message sur le répondeur de l'entreprise du patient :</p><br>
+              <blockquote>📱 LSMC | Bonjour, je vous confirme que M./Mme Prénom/Nom a bien validé sa visite médicale ce jour et est apte à travailler au sein de votre entreprise. <br>Cordialement</blockquote>
+              <br>
+              <p>Motifs d'invalidation : état de santé très bas (mauvais, exécrable), une malnutrition importante (dans ce cas, expliquer au patient comment se nourrir et refaire un contrôle au bout d'une semaine. Si le contrôle est bon, le patient peut travailler, sinon, la VM est invalidée)</p>
+              <br>
+              <p>💵 Facture : Visite médicale</p>
+              <p><em>pas de facture pour un(e) nouvel(le) arrivant(e) ou membre du service public</em></p>
+            </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Détatouage</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>Contexte : Une personne se présente et souhaite faire retirer un ou plusieurs tatouages.</p>
+                    <p>Faire une séance de consultation</p>
+                    <p>Donner les infos importantes : <br>🔸 La séance de laser peut être douloureuse <br>🔸 Le laser peut laisser des cicatrices <br>🔸 Pas de laser pour les personnes enceintes ou gravement blessé.</p>
+                    <p>Appliquer de la crème anesthésiante puis un bandage sur la surface à traiter et lui donner un rdv 15 min plus tard pour la séance de laser.</p>
+                    <p>💡 Pourquoi 15min ? Le temps que le produit pénètre correctement la peau et éviter de grosse douleurs</p>
+              <br>
+              <p>💵 Facture : 2 000$ le 1er tatouage et 500 $ par tatouage supplémentaire</p>
+              <br>
+              <p>Exemple du dossier :</p>
+                  </div>
+                  <blockquote>
+                    <div class="template-box">
+                    <pre class="template-content">💥 Circonstances de la prise en charge : (indiquer le tatouage)
+
+🩹 Diagnostic et soins :
+
+→ Laser de Détatouage / Laser de Détatouage Haute Puissance 
+→ Crème anesthésiante xxhxx 
+→ xxhxx Utilisation Laser pour détatouage, crème hydratante et pansement.
+
+💲 Facture : 
+🏥 Recommandation(s) Post-Op :
+→ Si dans les 1h fièvre, démangeaison revenir au lsmc, sinon vérif à J+1
+
+----------------
+👨‍⚕️ Médecin :
+🏥 Post-opératoire + 1J 
+📸 Surveillance du détatouage -> 
+🩺 Vérification de la cicatrisation / risque infectieux -> 
+✅ Changement des pansements -></pre>
+                    </div>
+                  </blockquote>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="mu" class="category-card">
+        <div class="summary">🚑 Médecine d'urgence</div>
+        <div class="category-body">
+          <div class="card-rows">
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Coma terrestre</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Prendre l'appel d'urgence sur le répondeur et prévenir le dispatch</p>
+                    <p>🔸Sortir le véhicule adapté (par défaut ambulance)</p>
+                    <p>🔸Trajet jusque la zone en code 3</p>
+                    <p>🔸Positionnement du véhicule de manière sécurisé</p>
+                    <p>🔸Mise en sécurité du patient et du médecin</p>
+                    <p>🔸Premiers soins du patient sur place (antidouleurs/garrot)</p>
+                    <p>🔸Retour au LSMC : communication radio avec le nombre de blessés et si besoin d’aide</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : fracture déplacée</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Confirmer le diagnostic avec une radiographie</p>
+                    <p>🔸Anesthésie locale / générale</p>
+                    <p>🔸Ouverture chirurgicale</p>
+                    <p>🔸Exploration de la plaie, retrait des fragments d’os, et examen des structures internes touchées</p>
+                    <p>🔸Contrôle des saignements</p>
+                    <p>🔸Mise en place de broches ou plaques en fonction de l’atteinte</p>
+                    <p>🔸Nettoyage de la plaie</p>
+                    <p>🔸Suture de la plaie</p>
+                    <p>🔸Mise en place d’un plâtre</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : Brûlure 3ème degré</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Évaluation initiale de la brûlure</p>
+                    <p>🔸Gestion de la douleur</p>
+                    <p>🔸Anesthésie</p>
+                    <p>🔸Nettoyage des tissues morts</p>
+                    <p>🔸Greffe de peau (La facture est un forfait qui comprend tout (radio, ambulance, médicaments, postops etc))</p>
+                    <p>🔸Bandages</p>
+                    <p>🔸Au moins trois postop pour une greffe de peau : un après les ITT, un 24h après et un 48h après.</p>
+                    <p>🔸Antibiotiques contre les infections</p>
+                    <p>🔸Suivi de rejet</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : Attaque de puma</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Sécurisation de la zone (call FDO)</p>
+                    <p>🔸Premiers soins sur place (garrot/bandage compressif)</p>
+                    <p>🔸Bandages compressif sur les plaies (voir antidouleur)</p>
+                    <p>🔸Installation dans l'ambulance</p>
+                    <p>🔸Retour hôpital</p>
+                    <p>🔸Scanner du patient / diagnostic des blessures</p>
+                    <p>🔸Soins adaptés (suture / retrait débris / etc)</p>
+                    <p>🔸Vaccin contre la rage et antibiotiques</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : Blessure par balle</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Scanner</p>
+                    <p>🔸Anesthésie local / général</p>
+                    <p>🔸Nettoyage de la plaie</p>
+                    <p>🔸Exploration de la plaie, retrait des fragments de projectiles, et examen des structures internes touchées</p>
+                    <p>🔸Contrôle des saignements</p>
+                    <p>🔸Nettoyage de la plaie</p>
+                    <p>🔸Suture de la plaie</p>
+                    <p>🔸Noter dans le dossier le calibre des Balles, si la personne portait un GPB / de l'équipement et l'endroit où a été récupéré la personne.</p>
+                    <p>🔸Appel FDO si la personne s'est présentée elle-même</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : craniotomie</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>Indication : hémorragie intracrânienne, œdème cérébral...</p>
+                    <p>🔸Confirmer l’atteinte avec un scanner cérébral</p>
+                    <p>🔸Anesthésie générale</p>
+                    <p>🔸Ouverture chirurgicale du crâne avec une perceuse</p>
+                    <p>🔸Procéder à l’acte nécessaire (ponction, soins...)</p>
+                    <p>🔸Refermer l’ouverture</p>
+                    <p>🔸Mise en place d’un bandage de protection</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Chirurgie : ablation d'organe</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>Indication : organe détruit ou mettant en péril les autres organes</p>
+                    <p>🔸Confirmer le diagnostic avec un scanner</p>
+                    <p>🔸Anesthésie générale</p>
+                    <p>🔸Ouverture chirurgicale de la zone concernée</p>
+                    <p>🔸Ablation de l’organe & cautérisations et/ou suture des vaisseaux</p>
+                    <p>🔸Suture cutanée et bandage de protection</p>
+                    <p>🔸Placer l’organe dans le laboratoire pour qu’il soit incinéré</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Patients multiples à l'hôpital</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Prise en charge des premiers blessés</p>
+                    <p>🔸Installation des blessés supplémentaires aux urgences</p>
+                    <p>🔸Traiter les patients par ordre de gravité</p>
+                    <p>🔸Utilisation de la salle de réveil une fois la chirurgie terminée</p>
+                    <p>🔸Gestion du réveil des patients</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-1">
+              <div data-accordion class="mini-card">
+                <div class="summary">Patients multiples sur intervention</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Mise en place d'un lead dispatch et si nécessaire un lead terrain</p>
+                    <p>🔸Avoir la quantité adéquate de matériel d'urgence sur soi</p>
+                    <p>🔸Avertir le dispatch lors d'un déplacement</p>
+                    <p>🔸Alerter le lead terrain de l'état des patients, afin qu'il puisse déterminer les priorités de retour (si patients au même endroit)</p>
+                    <p>🔸Transmettre les infos importantes au médecin qui prend en charge le patient</p>
+                    <p>🔸Communiquer avec son équipe</p>
+                    <p>🔸Retour LSMC sous avis du lead terrain</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="dcd" class="category-card">
+        <div class="summary">⚰️ Procédure en cas de décès</div>
+        <div class="category-body">
+          <div class="mini-list"><br>
+            <p class="sub-title">Contacter les médecins-légistes par SMS / radio afin de les prévenir du décès. Si aucun médecin-légiste n’est disponible :</p>
+            <p>🔸Créer l’entrée “Décès” dans le dossier de la personne. Cas spécial : si le défunt est un LSMC, créer l'entrée en accident classique sans mentionner le décès de la personne.</p>
+            <p>🔸Détailler au maximum le décès dans le dossier. Un template de dossier est disponible à la fin de la formation.</p>
+            <p>🔸Une fois le dossier complété, rhabiller la personne et la transférer dans une salle de repos (Ascenseur pour ne pas passer dans le hall). Noter la salle et l'identité dans les notes du dispatch.</p>
+            <p>🔸Contacter tous les contacts d’urgence de la personne. Ne surtout pas donner le décès par téléphone (qu'importe l'entreprise ou les personnes).</p>
+            <p>🔸Leur demander de se présenter à l’hôpital pour leur annoncer le décès.</p>
+            <p>🔸Une fois que tous les contacts d’urgence sont informés : contacter les forces de l’ordre & Mandatory par le répondeur entreprise FDO : demander à être recontacté par un Etat Major et MDR un message informant du décès de Mr/Mme X survenu ce jour (SAUF si le défunt appartient à Mandatory, dans ce cas, demandez à être recontacter).</p>
+          </div><br>
+          <h5>💥 Modèle de dossier</h5>
+          <blockquote>
+            <div class="template-box">
+              <pre class="template-content">
+📍 Circonstances de l'appel (Lieu / contexte): 
+💉 Description complètes des soins tentés :
+⦁
+
+🕰️ Heure du décès : XXhXX
+📞 Contacts d'urgence (Nom et heure de contact) :
+⦁
+⦁
+⦁
+
+📞 Heure de l'annonces du décès :
+⦁ EM FDO : XXhXX
+⦁ MDR : XXhXX
+
+🩺 🩹 Blessures :
+⦁
+⦁
+
+🔬 Analyses
+⦁ Test Alcoolémie : X.XX g/L
+⦁ Test Dépistage : Négatif ou Positif
+
+🩻 Scanner : Utilisation imgshare.ouranos.pro/
+Photo globale du scanner : 
+⦁
+Photo de chaques blessures constatées : 
+⦁
+
+📷 Photos :
+Photo de la personne habillée sur le scanner : 
+⦁
+Photo des signes distinctif apparents de la personne en blouse (tatouages, cicatrices)
+⦁</pre>
+            </div>
+          </blockquote>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= Cursus de niveau 1 ======================= -->
+<div data-accordion id="certifs" class="t-green main-section" >
+  <div class="summary section-summary">
+    <p>🧑‍🎓 Cursus de niveau 1 - <em>dès le grade Résident</em></p>
+    <span class="summary-sub">
+      <span class="toc1">
+        <a class="category-link" href="#incendie" data-target="incendie">🔥 Sécurité incendie</a>
+        <a class="category-link" href="#lead-terrain" data-target="lead-terrain">🛡️ Lead terrain</a>
+        <a class="category-link" href="#formateur-ps" data-target="formateur-ps">🩹 Formateur premiers secours</a>
+        <a class="category-link" href="#secours-aerien" data-target="secours-aerien">🚁 Secours aériens</a>
+        <a class="category-link" href="#secours-maritime" data-target="secours-maritime">⛵ Secours maritime</a>
+        <a class="category-link" href="#psychologie" data-target="psychologie">🗒️ Psychologie</a>
+      </span>
+    </span>
+  </div>
+
+  <div class="content">
+    <div class="category-cards">
+      <div data-accordion id="incendie" class="category-card">
+        <div class="summary">🔥 Sécurité incendie</div>
+        <div class="category-body">
+          <div class="card-rows">
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Savoir positionner le camion</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Se placer dos au danger</p>
+                    <p>🔸Rester à une distance raisonnable (entre 10 et 50m)</p>
+                    <p>🔸Rester prêt à partir</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Feu de véhicule léger</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Si nécessaire, prévenir les FDOs</p>
+                    <p>🔸Garer le camion de pompiers</p>
+                    <p>🔸Extincteur</p>
+                    <p>🔸Reconnaissance (présence de fuites d'essence)</p>
+                    <p>🔸Si fuite d’essence : essayer de la maitriser (terre, ...)</p>
+                    <p>🔸Maitriser l'incendie (roue avant et capot)</p>
+                    <p>🔸Communication interservices</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Explosion de véhicule</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Si besoin, appel FDOs</p>
+                    <p>🔸Garer le camion de pompier</p>
+                    <p>🔸Reconnaissance (présence de victimes)</p>
+                    <p>🔸Maitriser l'incendie et positionnement du camion</p>
+                    <p>🔸2ème reconnaissance extincteur</p>
+                    <p>🔸Communication interservices</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Station essence</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Appel FDO</p>
+                    <p>🔸Garer le camion de pompiers</p>
+                    <p>🔸Communication interservices</p>
+                    <p>🔸Reconnaissance</p>
+                    <p>🔸Maitriser l'incendie et positionnement du camion</p>
+                    <p>🔸2ème reconnaissance visuelle</p>
+                    <p>🔸Fermeture de la valve d'essence</p>
+                    <p>🔸Communication interservices</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-2">
+              <div data-accordion class="mini-card">
+                <div class="summary">Colis piégé</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Appel FDO</p>
+                    <p>🔸Garer le camion de pompiers</p>
+                    <p>🔸Communication interservices</p>
+                    <p>🔸Reconnaissance des FDO</p>
+                    <p>🔸Sur OK des FDOs arroser la poubelle</p>
+                    <p>🔸2ème reconnaissance</p>
+                    <p>🔸Faire un rapport aux FDOs</p>
+                  </div>
+                </div>
+              </div>
+              <div data-accordion class="mini-card">
+                <div class="summary">Feu de bâtiment</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Appel FDOs si nécessaire</p>
+                    <p>🔸Garer le camion de pompiers</p>
+                    <p>🔸Reconnaissance en binôme (extincteur)</p>
+                    <p>🔸Chercher les victimes (une personne extrait les blessés, l’autre suit à l’extincteur)</p>
+                    <p>🔸Extinction des foyers (lance ou extincteurs)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-1">
+              <div data-accordion class="mini-card">
+                <div class="summary">Feu de broussailles</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸Appel FDOs si nécessaire</p>
+                    <p>🔸Garer le camion de pompiers</p>
+                    <p>🔸Reconnaissance du foyer</p>
+                    <p>🔸Extinction du foyer (lance/extincteur)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="lead-terrain" class="category-card">
+        <div class="summary">🚑 Lead terrain</div>
+        <div class="category-body">
+          <div class="board">
+
+            <!-- DISPATCH -->
+            <div class="group-row dispatch">
+              <span class="icon">📡Lead Dispatch : informations</span>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill role">
+                  <span class="icon">🎯</span>
+                  <span>Rôle du Lead Dispatch</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  Le Lead Dispatch gère les calls, organise les médecins et les véhicules,
+                  et veille à la sécurité du personnel.
+                </div>
+              </div>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill dispatch">
+                  <span class="icon">🎛️</span>
+                  <span>Buts du Lead Dispatch</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Créer et tenir à jour le dispatch des médecins et véhicules selon les interventions ou les opérations internes.<br>
+                  🔸 Prendre en charge les calls entrants et les calls sortants ainsi que ceux des autres SP.<br>
+                  🔸 S’assurer que les médecins sont envoyés en sécurité et assurer qu'ils sont en capacité de prendre l'intervention (certifs, grade etc).
+                </div>
+              </div>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill tasks">
+                  <span class="icon">📞</span>
+                  <span>Tâches du Dispatch</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Répondre aux calls radio.<br>
+                  🔸 Gérer et noter les interventions et prises de salles.<br>
+                  🔸 Mettre à jour la disponibilité des médecins.<br>
+                  🔸 Réagir rapidement en cas d’urgence.<br>
+                  🔸 Demander l''aide d'un co-lead dispatch si nécessaire (et fortement recommandé).
+                </div>
+              </div>
+            </div>
+
+            <!-- TERRAIN -->
+            <div class="group-row terrain">
+              <span class="icon">🚑</span>
+              <span>Lead Terrain</span>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill before">
+                  <span class="icon">🚨</span>
+                  <span>Avant le départ</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Mise en place des équipes et répartition des véhicules.<br>
+                  🔸 Vérifier le matériel et les gilets pare-balles.<br>
+                  🔸 Répartition des tâches dans les équipes.<br>
+                  🔸 Inscription des véhicules sur le Dispatch.
+                </div>
+              </div>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill on-site">
+                  <span class="icon">🏁</span>
+                  <span>Arrivée sur place</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Identifier la zone safe définie par la Trauma Team (si présente).<br>
+                  🔸 Prioriser selon l’urgence médicale.<br>
+                  🔸 Répartir les équipes sur les blessés.<br>
+                  🔸 Gestion de la scène avec la Trauma Team (si présente).
+                </div>
+              </div>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill evac">
+                  <span class="icon">🚐</span>
+                  <span>Évacuation</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Remplir les ambulances selon les priorités médicales.<br>
+                  🔸 Vérifier que toutes les victimes identifiées sont prises en charge.<br>
+                  🔸 Anticiper les besoins médicaux pendant le transport.<br>
+                  🔸 Informer la Trauma Team du départ (si présente).<br>
+                  🔸 Lead Terrain quitte la zone en dernier.
+                </div>
+              </div>
+            </div>
+
+            <div class="data-row">
+              <div class="col-section">
+                <div class="section-pill hospital">
+                  <span class="icon">🏥</span>
+                  <span>Arrivée à l'hôpital</span>
+                </div>
+              </div>
+              <div class="col-desc">
+                <div class="desc-text">
+                  🔸 Demander du renfort si nécessaire.<br>
+                  🔸 Traiter selon la gravité.<br>
+                  🔸 Installer les patients et attribuer un lit selon " Plan en cas d'urgence ".<br>
+                  🔸 S'assurer que toutes les identités ont été prises et noter sur le Dispatch.
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="formateur-ps" class="category-card">
+        <div class="summary">🌐 Formateur premiers secours</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p class="sub-title"><strong>Que faire face à une situation d'urgence</strong></p>
+              <p>Garder son calme</p>
+              <p>🔸 Appeler les forces de l'ordre pour sécuriser la zone si nécessaire</p>
+              <p>🔸 APpeler New Gahray si un véhicule doit être pris en charge / est accidenté</p>
+              <p>🔸 Débuter un massage cardiaque, si vous savez faire et si besoin</p>
+              <br>
+              <p class="sub-title"><strong>Prévenir le LSMC</strong></p>
+              <p>🔸 Indiquer le type d'accident</p>
+              <p>🔸 Indiquer le nombre de victimes</p>
+              <p>🔸 Indiquer le lieu / la position</p>
+              <p>🔸 Indiquer si la/les victimes sont conscientes ou non</p>
+              <br>
+              <blockquote>
+                <p class="sub-title"><strong>Messages types</strong></p>
+                <p>🔸 Bonjour, accident de voiture devant la salle de sport, 2 personnes blessées dont 1 inconsciente.</p>
+                <p>🔸 Bonsoir, mon ami a oublié de boire, il ne me répond plus. On est aux taxis.</p>
+              </blockquote>
+              <br>
+              <p class="sub-title"><strong>Pourquoi une formation premiers secours ?</strong></p>
+              <p>🔸 Sauver des vies</p>
+              <p>🔸 Les gestes de premiers secours peuvent jouer un rôle crucial dans la préservation de la vie d’une personne en attendant l’arrivée de professionnel de santé.</p>
+              <p>🔸 Réduire les séquelles</p>
+              <p>🔸 En fournissant les premiers secours de manière appropriée, vous contribuez à réduire les séquelles physiques ou mentales qui peuvent surgir suite à une blessure.</p>
+              <p>🔸 Intervention rapide</p>
+              <p>🔸 Les premiers secours permettent d’apporter une assistance immédiate, ce qui peut être crucial pour sauver une vie</p>
+              <p>🔸 Obligations morales et légales</p>
+              <p>🔸 Il peut être obligatoire pour votre profession d’être formé aux gestes de premiers secours. Il est également considéré comme une responsabilité morale d'être en mesure d'aider les autres en cas d'urgences.</p>
+              <br>
+              <p class="sub-title"><strong>Que faire ?</strong></p>
+              <p>En cas de brûlure</p>
+              <p>🔸 Si les vêtements sont en feu : couvrir avec un tissu épais</p>
+              <p>🔸 Arroser longuement les brûlures avec de l'eau tiède (ni trop chaude ni trop froide)</p>
+              <p>🔸 Ne pas appliquer de pommade ou de froid</p>
+              <p>En cas d'inconscience</p>
+              <p>🔸 Continuer de parler à la victime</p>
+              <p>🔸 La mettre en position latérale de sécurité</p>
+              <p>🔸 Commencer un massage cardiaque si besoin</p>
+              <p>En cas de blessure par balle</p>
+              <p>🔸 Faire une compression avec un tissu propre</p>
+              <p>🔸 Si ça ne suffit pas et si c'est possible : faire un garrot</p>
+              <p>🔸 Prévenir le LSMC</p>
+              <br>
+              <p class="sub-title"><strong>Comment faire une massage cardiaque ?</strong></p>
+              <p>🔸 Vérifier la respiration</p>
+              <p>🔸 Allongez la personne sur le dos, et vérifiez sa respiration en approchant votre oreille de sa bouche et en contrôlant la soulèvement de sa poitrine</p>
+              <p>🔸 Positionnement des mains</p>
+              <p>🔸 Si la personne ne respire pas normalement, placez le talon de votre main au milieu de la poitrine, entre les mamelons. Placez l’autre main au dessus, en entrelaçant les doigts.</p>
+              <p>🔸 Compression thoracique</p>
+              <p>🔸 Avec les bras tendus, appuyez fermement sur la poitrine vers le bas en utilisant le poids de votre corps pour effectuer des compressions thoraciques. Les compressions doivent être de 5 à 6cm de profondeur pour un patient adulte. Comprimez la poitrine à un rythme de 100 à 120 battements par minute.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="secours-aerien" class="category-card">
+        <div class="summary">🚁 Secours aériens</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p class="sub-title"><strong>Rôles du copilote</strong></p>
+              <p>🔸 Gérer les communications radio avec le dispatch et les forces de l'ordre</p>
+              <p>🔸 Observer les environs (pumas, requins etc...)</p>
+              <p>🔸 Etre prêt à intervenir en milieu aquatique ou montagneux</p>
+              <br>
+              <p class="sub-title"><strong>Intervention en milieu aquatique</strong></p>
+              <p>🔸 Descente en rappel possible avec une tenue de plongée</p>
+              <p>🔸 Saut depuis l'arrière possible à très basse altitude</p>
+              <p>🔸 Surveillance accrue des environs avec le risque de requins</p>
+              <br>
+              <p class="sub-title"><strong>Intervention en milieu montagneux</strong></p>
+              <p>🔸 Descente en rappel possible uniquement sur terrain plat</p>
+              <p>🔸 Suivre les ordres du pilote avant de bouger</p>
+              <p>🔸 Surveillance accrue des environs avec le risque de pumas, de chute et de découpage avec les pales</p>
+              <br>
+              <p class="sub-title"><strong>Descente en rappel</strong></p>
+              <p>🔸 Place arrière</p>
+              <p>🔸 Détacher son harnais</p>
+              <p>🔸 Tirer la languette annotée "E"</p>
+              <p>🔸 Attendre que la corde atteigne le sol</p>
+              <br>
+              <p class="sub-title"><strong>Spot lumineux et caméra</strong></p>
+              <p>🔸 Poste de copilote avant</p>
+              <p>🔸 Allumer le spot lumineux avec le bouton "E" du tableau de bord</p>
+              <p>🔸 Prendre en main la caméra de la marque "B" sur le tableau de bord</p>
+              <p>🔸 Caméra standard, vision nocturne puis vision thermique grâce au bouton de swipe droite</p>
+              <br>
+              <p class="sub-title"><strong>Sauter en parachute</strong></p>
+              <p>🔸 Sauter de l'hélicoptère</p>
+              <p>🔸 Tirer sur la languette "F" une seule fois pour déployer le parachute</p>
+              <p>🔸 Atterrir en douceur en levant ou shiftant les genoux</p>
+              <br>
+              <p class="sub-title"><strong>Choisir sa place</strong></p>
+              <p>🔸 A l'avant</p>
+              <p>🔸 Si besoin du projecteur ou de la caméra</p>
+              <p>🔸 A l'arrière</p>
+              <p>🔸 Si besoin de descendre en rappel ou de monter/descendre rapidement</p>
+              <br>
+              <p class="sub-title"><strong>Brancards et escortes des personnes</strong></p>
+              <p>🔸 Pas de brancards !</p>
+              <p>🔸 Escorte possible jusqu'aux abords de l'hélicoptère</p>
+              <br>
+              <p class="sub-title"><strong>Zones interdites au survol</strong></p>
+              <p>🔸 Base militaire de Zancudo</p>
+              <p>🔸 Laboratoires Humane</p>
+              <p>🔸 Pénitencier de Bolingbroke</p>
+              <p>🔸 Centre du Noose</p>
+              <p>🔸 Gouvernement</p>
+              <p>🔸 Tour FIB</p>
+              <p>🔸 Villa de Cayo Perrico et alentours</p>
+              <br>
+              <p class="sub-title"><strong>Pilote</strong></p>
+              <p class="sub-title"><strong>Points d'attention particuliers</strong></p>
+              <p>Bien boire et bien manger</p>
+              <p>🔸 Ne pas oublier de serrer son harnais de sécurité</p>
+              <p>🔸 Porter attention aux pales qui tournent</p>
+              <p>🔸 Toujours avoir un parachute sur soi</p>
+              <p>🔸 Rester attentif aux zones de survol</p>
+              <p>🔸 Toujours demander les autorisations pour se poser</p>
+              <p>🔸 Adapter le pilotage à la météo</p>
+              <p>🔸 Ne pas survoler les installations électriques pour éviter tout problème électromagnétique</p>
+              <p>🔸 Ne pas se poser au milieu de la route pour éviter les suraccidents</p>
+              <p>🔸 Faire attention lors de rase-motte pour ne pas prendre d’arbre ou de poteau</p>
+              <br>
+              <p class="sub-title"><strong>Se poser sur un hélipad</strong></p>
+              <p>🔸 Sur l'hélipad du LSMC ou de la clinique nord</p>
+              <p>🔸 Annoncer l'atterrissage en radio</p>
+              <p>🔸 Sur tout autre hélipad</p>
+              <p>🔸 Demander l'autorisation au propriétaire</p>
+              <br>
+              <p class="sub-title"><strong>Matériel nécessaire dans l'hélicoptère</strong></p>
+              <p>🔸 Tenues de plongée, tenues LSMC, parachute</p>
+              <p>🔸 Bidons de kérozène, bidons d'huile</p><br>
+              <p class="sub-title"><strong>Zones interdites au survol</strong></p>
+              <p>🔸 Base militaire de Zancudo</p>
+              <p>🔸 Laboratoires Humane</p>
+              <p>🔸 Pénitencier de Bolingbroke</p>
+              <p>🔸 Centre du Noose</p>
+              <p>🔸 Gouvernement</p>
+              <p>🔸 Tour FIB</p>
+              <p>🔸 Villa de Cayo Perrico et alentours</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="secours-maritime" class="category-card">
+        <div class="summary">🌊 Secours maritime</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p class="sub-title"><strong>Plongée - Exercices</strong></p>
+              <p>Se rendre sur une zone au choix</p>
+              <p>Expliquer et mettre l'ancre</p>
+              <p>Monter et expliquer la mise en place d'une tenue de plongée</p>
+              <p>Exercice 1 : sauvetage simple d'une personne à l'eau, l'instructeur se met à l'eau et doit se faire rapatrier sur le bateau</p>
+              <p>Exercice 2 : recherche de victime, l'instructeur se cache dans l'épave ou dans les fonds marins et doit se faire rapatrier sur le bateau</p><br>
+              <p class="sub-title"><strong>Points d'attention</strong></p>
+              <p>🔸 Ne jamais enlever son masque, retirer la tenue complète</p>
+              <p>🔸 Mettre en place une fréquence radio secondaire pour les formations</p>
+              <p>🔸 Expliquer la possibilité d’intervention de plongeurs depuis un hélicoptère</p>
+              <p>🔸 Ne jamais réanimer une personne sur le bateau, mais le faire dans l’eau</p>
+              <p>🔸 Ne jamais escorter une personne proche d’un bateau, l’aider à nager dans les 10-15 mètres autour</p>
+              <p><strong>La sécurité des médecins est toujours la priorité :</strong> si une zone est trop dangereuse ou si les médecins ne sont pas en confiance, ils n’interviennent pas ! Soit ils contactent des renforts, soient ils laissent les UHU intervenir !</p><br>
+              <p class="sub-title"><strong>Points importants</strong></p>
+              <p>Privilégier les interventions à deux personnes</p>
+              <p>Faire attention à l’étanchéité de sa combinaison : ne pas retirer les gants, etc</p>
+              <p>Faire attention au niveau de kérosène du bateau</p>
+              <p>Faire attention aux requins, orques, ect</p>
+              <p>Ne pas escorter quelqu’un sur le bateau</p>
+              <p>Réanimer dans l’eau</p>
+              <br>
+              <p class="sub-title"><strong>Recherche de victimes</strong></p>
+              <p>Aller sur la zone de recherche et mettre l'ancre, se cacher dans l'épave de bateau puis la personne en formation doit chercher le formateur et le ramener au bateau</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="psychologie" class="category-card">
+        <div class="summary">🧠 Psychologie</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p class="sub-title"><strong>Éléments communs</strong></p>
+              <p>🔸 Écouter le patient de façon active</p>
+              <p>🔸 Comprendre ses attentes et ses besoins</p>
+              <p>🔸 Ne pas émettre de jugements</p>
+              <p>🔸 Chaque médecin est libre de la manière dont il mène ses séances, mais des points d’attention sont attendus.</p>
+              <p>🔸 Créer une entrée sur le dossier du patient.</p>
+              <br>
+              <p class="sub-title"><strong>Mener une séance psy "classique"</strong></p>
+              <p>🔸 Mise en confiance du patient pour que celui-ci puisse exprimer son ressenti/ses souffrances sans filtres.</p>
+              <p>🔸 Poser des questions ouvertes pour laisser le patient s’exprimer.</p>
+              <p>🔸 Proposer des conseils au patient en fonction du sujet, essayer, s’il en a besoin, de ne pas le laisser sans réponse.</p>
+              <p>🔸 Déterminer si un suivi régulier est nécessaire.</p>
+              <p>🔸 Compléter le dossier du patient en entrée Consultation psy, avec le plus d'infos pertinentes possible.</p>
+              <p>🔸 Si la séance a un lien avec un dépôt de plainte, compléter et transmettre le certificat psychologique au patient ou à son avocat..</p>
+              <br>
+              <p class="sub-title"><strong>Utilisation d'une arme et enclenchement du protocole administratif</strong></p>
+              <p><strong>Niveau 1</strong></p>
+              <p>🔸 Faire un check complet de l'état de santé physique du patient (tension comprise).</p>
+              <p>🔸 Commencer un échange sur les événements qui ont mené à l'enclenchement du protocole administratif. Déjà confronté à cette situation ?</p>
+              <p>🔸 Comprendre et analyser l'état d'esprit du patient dans la situation donnée.</p>
+              <p>🔸 Voir si le patient est apte à reprendre le travail (Déterminer si le patient peut constituer un danger pour les autres, s'il est mentalement en capacité de reprendre le travail, s'il se rend compte des conséquences de ses actes, etc.).</p>
+              <br>
+              <p><strong>Niveau 2</strong></p>
+              <p>🔸 Comme le niveau 1</p>
+              <p>🔸 Rédiger un compte-rendu administratif est obligatoire.</p>
+              <p>🔸 Transmettre le certificat psychologique complété à l'interlocuteur chargé de l'affaire.</p>
+              <p>🔸 Ne pas oublier de mentionner s'il est nécessaire de suspendre le PPA ou d'arrêter la personne.</p>
+              <br>
+              <p class="sub-title"><strong>Désintox</strong></p>
+              <p>🔸 Comprendre d’où vient la dépendance.</p>
+              <p>🔸 Conseils pour mieux gérer la situation.</p>
+              <p>🔸 Réduire progressivement la consommation, jusqu’à ce qu’elle soit nulle. S’adapter à la progression du patient.</p>
+              <br>
+              <p>Si la réduction de consommation ne fonctionne pas ou que ce n’est pas compatible alors :</p>
+              <p>🔸 Substitution médicamenteuse en fonction des addictions (nalméfène, opioïdes, benzodiazépine etc…).</p>
+              <p>🔸 Traitement médical des potentiels symptômes de manque.</p>
+              <p>🔸 Suivi psychologique régulier et prévention d’éventuelles rechutes.</p>
+               <br>
+              <p class="sub-title"><strong>Mal être léger</strong></p>
+              <p>Une personne se présente en disant qu'elle se sent très stressée</p>
+              <p>🔸 Aller en salle psy et prendre sa tension</p>
+              <p>🔸 Le patient a plus de 60” de tension. (Ne pas donner d'antidépresseur si la tension est inférieur)</p>
+              <p>🔸 Demander au patient s’il suit bien les recommandations du LSMC en termes de stress. cf Guide de santé</p>
+              <p>🔸 Si non, revoir la personne quelques jours plus tard en lui conseillant de suivre nos recommandations. Si oui, voir la suite.</p>
+              <p>🔸 Sensibiliser le patient sur la prise d'antidépresseur</p>
+              <p>🔸 Prescription d'un antidépresseur. (Maximum 2 par mois) Si la limite des deux antidépresseurs est dépassée prescrire des ITT.</p>
+              <p>🔸 Vérifier à ce que l’antidépresseur soit consommé directement.</p>
+              <p>🔸 Proposition d'un suivi régulier avec un psychologue.</p>
+              <br>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ======================= Cursus de niveau 2 ======================= -->
+<div data-accordion id="fdo" class="t-blue main-section">
+  <div class="summary section-summary">
+    <p>👮 Cursus de niveau 2 - <em>dès le grade Titulaire</em></p>
+    <span class="summary-sub">
+      <span class="toc1">
+        <a class="category-link" href="#niv2-cardio" data-target="niv2-cardio">🫀 Cardiologie</a>
+        <a class="category-link" href="#niv2-neuro" data-target="niv2-neuro">🧠 Neurologie</a>
+        <a class="category-link" href="#niv2-kine" data-target="niv2-kine">💪 Kinésithérapie</a>
+        <a class="category-link" href="#niv2-transplant" data-target="niv2-transplant">🫁 Chirurgie transplantatoire</a>
+        <a class="category-link" href="#niv2-legale" data-target="niv2-legale">☠️ Médecine légale</a>
+        <a class="category-link" href="#niv2-trauma" data-target="niv2-trauma">⚕️ Trauma Team</a>
+      </span>
+    </span>
+  </div>
+
+  <div class="content">
+    <div class="category-cards">
+      <div data-accordion id="niv2-cardio" class="category-card">
+        <div class="summary">❤️ Cardiologie</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p><strong>Formation — Système cardiovasculaire</strong></p><br>
+              <p class="sub-title"><strong>1. Utilité du système cardiovasculaire</strong></p>
+              <p>Le système cardiovasculaire a pour rôle de transporter le sang dans tout le corps. Il permet :</p>
+              <p>🔸 D’apporter l’oxygène et les nutriments aux organes et tissus.</p>
+              <p>🔸 D’évacuer les déchets et le dioxyde de carbone (CO₂).</p>
+              <p>🔸 De maintenir une circulation continue grâce aux battements du cœur.</p>
+              <br>
+              <p class="sub-title"><strong>2. Composantes du système cardiovasculaire</strong></p>
+              <p>🔸 Le cœur : organe principal qui pompe le sang.</p>
+              <p>🔸 Les artères : transportent le sang riche en oxygène du cœur vers les organes.</p>
+              <p>🔸 Les veines : ramènent le sang appauvri en oxygène vers le cœur.</p>
+              <p>🔸 Les capillaires : petits vaisseaux où s’effectuent les échanges gazeux et nutritifs.</p>
+              <br>
+              <p class="sub-title"><strong>3. Circulation sanguine</strong></p>
+              <p>Le sang circule dans un trajet fermé et continu. Voici les principales étapes du parcours :</p>
+              <p>🔸 Oreillette droite</p>
+              <p>🔸 Ventricule droit</p>
+              <p>🔸 Artères pulmonaires</p>
+              <p>🔸 Capillaires pulmonaires (échanges gazeux dans les poumons)</p>
+              <p>🔸 Veines pulmonaires</p>
+              <p>🔸 Oreillette gauche</p>
+              <p>🔸 Ventricule gauche</p>
+              <p>🔸 Artères systémiques</p>
+              <p>🔸 Organes et tissus</p>
+              <p>🔸 Veines systémiques</p>
+              <p>L’oxygène est absorbé dans le sang au niveau des poumons et distribué dans tout l’organisme. Le sang ramène ensuite le CO₂ aux poumons pour être expiré.</p>
+              <br>
+              <p class="sub-title"><strong>4. Anatomie du cœur</strong></p>
+              <p>Le cœur est composé de quatre cavités :</p>
+              <p>🔸 Oreillette droite</p>
+              <p>🔸 Ventricule droit</p>
+              <p>🔸 Oreillette gauche</p>
+              <p>🔸 Ventricule gauche</p>
+              <p>Des valvules cardiaques assurent la circulation du sang dans le bon sens et empêchent le reflux. Le cœur agit comme une pompe qui entretient la circulation.</p>
+              <br>
+              <p class="sub-title"><strong>5. Électrocardiogramme (ECG)</strong></p>
+              <p><strong>Utilité</strong></p>
+              <p>L’ECG enregistre l’activité électrique du cœur grâce à des électrodes placées sur le corps. Il permet :</p>
+              <p>🔸 De mesurer le rythme et la fréquence cardiaque.</p>
+              <p>🔸 De détecter des anomalies électriques (arythmies, infarctus, etc.).</p>
+              <p>🔸 De suivre l’état du muscle cardiaque.</p>
+              <p><strong>Lecture d’un ECG</strong></p>
+              <p>🔸 Onde P : contraction (dépolarisation) des oreillettes.</p>
+              <p>🔸 Segment PR : temps de passage du signal vers les ventricules.</p>
+              <p>🔸 Complexe QRS : contraction (dépolarisation) des ventricules — le battement du cœur.</p>
+              <p>🔸 Segment ST : période entre la contraction et la repolarisation.</p>
+              <p>🔸 Onde T : repolarisation (relâchement) des ventricules.</p>
+              <p>🔸 Onde U : fin de la repolarisation cardiaque.</p>
+              <p><strong>Réalisation d’un ECG</strong></p>
+              <p>🔸 Installer le patient en position allongée et détendue.</p>
+              <p>🔸 Placer les électrodes aux emplacements précis (membres et thorax).</p>
+              <p>🔸 Vérifier la qualité du tracé avant l’enregistrement.</p>
+              <p>🔸 Analyser ensuite la courbe obtenue.</p>
+              <br>
+              <p class="sub-title"><strong>6. Insuffisance cardiaque</strong></p>
+              <p><strong>Définition</strong></p>
+              <p>L’insuffisance cardiaque est une incapacité du cœur à pomper suffisamment de sang pour répondre aux besoins de l’organisme. Le muscle cardiaque peut être affaibli ou rigide.</p>
+              <p><strong>Classification NYHA</strong></p>
+              <p>🔸 Stade I : aucune limitation d’activité.</p>
+              <p>🔸 Stade II : gêne lors d’efforts importants.</p>
+              <p>🔸 Stade III : symptômes lors d’efforts modérés.</p>
+              <p>🔸 Stade IV : symptômes au repos.</p>
+              <p><strong>Signes et symptômes</strong></p>
+              <p>🔸 Essoufflement, fatigue, faiblesse.</p>
+              <p>🔸 Œdèmes (gonflement des jambes).</p>
+              <p>🔸 Prise de poids, toux sèche, arythmie.</p>
+              <p>🔸 Diminution de la tolérance à l’effort.</p>
+              <p><strong>Traitement</strong></p>
+              <p>🔸 Médicaments : bêta-bloquants, diurétiques, IEC, etc.</p>
+              <p>🔸 Mode de vie : activité adaptée, réduction du tabac et de l’alcool.</p>
+              <p>🔸 Chirurgie : pacemaker, défibrillateur, greffe cardiaque, chirurgie des valves.</p>
+              <br>
+              <p class="sub-title"><strong>7. Arythmies cardiaques</strong></p>
+              <p><strong>Définition</strong></p>
+              <p>L’arythmie est un trouble du rythme cardiaque causé par un dysfonctionnement électrique du cœur. Le rythme peut être trop rapide, trop lent ou irrégulier.</p>
+              <p><strong>Types d’arythmies</strong></p>
+              <p>🔸 Tachycardie : fréquence &gt; 100 bpm.</p>
+              <p>🔸 Bradycardie : fréquence &lt; 60 bpm.</p>
+              <p>🔸 Fibrillation auriculaire : battements rapides et irréguliers des oreillettes.</p>
+              <p>🔸 Flutter auriculaire : battements rapides mais plus organisés.</p>
+              <p>🔸 Tachycardie ventriculaire : rythme trop rapide des ventricules.</p>
+              <p>🔸 Fibrillation ventriculaire : contractions chaotiques et inefficaces.</p>
+              <p><strong>Signes et symptômes</strong></p>
+              <p>🔸 Palpitations.</p>
+              <p>🔸 Vertiges, étourdissements.</p>
+              <p>🔸 Faiblesse, fatigue.</p>
+              <p>🔸 Douleurs thoraciques.</p>
+              <p>🔸 Évanouissements.</p>
+              <p><strong>Traitement</strong></p>
+              <p>🔸 Médicaments : antiarythmiques, bêta-bloquants.</p>
+              <p>🔸 Cardioversion : choc électrique contrôlé pour rétablir le rythme normal.</p>
+              <p>🔸 Procédures : ablation, pacemaker ou défibrillateur implantable.</p>
+              <br>
+              <p class="sub-title"><strong>8. Dossier de suivi</strong></p>
+              <p>Le candidat doit savoir créer un dossier complet pour assurer un suivi médical efficace :</p>
+              <p>🔸 Identité du patient et des cardiologues.</p>
+              <p>🔸 Examens réalisés (imagerie, ECG, auscultation, etc.).</p>
+              <p>🔸 Résultats et diagnostic.</p>
+              <p>🔸 Traitement mis en place.</p>
+              <p>🔸 Date et objectif du prochain suivi.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="niv2-neuro" class="category-card">
+  <div class="summary">🧠 Neurologie</div>
+  <div class="category-body">
+    <div class="mini-body">
+      <div class="mini-list">
+        <p class="sub-title"><strong>A. Définition et troubles étudiés</strong></p>
+        <p>La neurologie est la spécialité médicale dédiée à l’étude, au diagnostic, au traitement et à la prévention des maladies du système nerveux. Ce dernier comprend : le cerveau, la moelle épinière, les nerfs périphériques et les muscles associés.</p>
+        <p>Dans ce domaine, on s’intéresse principalement aux troubles de la conscience, des fonctions intellectuelles, du langage, du comportement, du contrôle des mouvements, des perceptions sensorielles, de la douleur. Ces derniers peuvent aussi bien être liés à des troubles aigus comme à des pathologies chroniques.</p>
+        <br>
+        <p class="sub-title"><strong>B. Anatomie - système nerveux</strong></p>
+        <p>anatomie du système nerveux</p>
+        <a href="https://imgshare.ouranos.pro/image/fe538410.b95AO"><img class="img-500" src="https://imgshare.ouranos.pro/images/2026/02/11/fe538410.png" alt="fe538410" border="0"></a>
+        <br>
+        <p class="sub-title"><strong>C. Anatomie - cerveau</strong></p>
+        <p>anatomie du cerveau</p>
+        <a href="https://imgshare.ouranos.pro/image/brain-10.b9FeR"><img class="img-500" src="https://imgshare.ouranos.pro/images/2026/02/11/brain_10.png" alt="brain 10" border="0"></a>
+        <br>
+        <p class="sub-title"><strong>Zone du cerveau — Rôle</strong></p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Zone du cerveau</th>
+              <th>Rôle</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Lobes pariétaux</td>
+              <td>Interprétation des informations sensorielles, contrôle de la position du corps, influence sur le langage et les mathématiques, cumul des souvenirs spatiaux pour s'orienter.</td>
+            </tr>
+            <tr>
+              <td>Lobes occipitaux</td>
+              <td>Traitement et analyse de la vision, création de souvenirs visuels, intègre les perceptions visuelles avec les informations spatiales des lobes pariétaux.</td>
+            </tr>
+            <tr>
+              <td>Lobes frontaux</td>
+              <td>Initiation d'actions volontaires (regarder un objet, relâcher la vessie), contrôle des capacités motrices acquises (écrire), contrôle des processus intellectuels complexes (langage, concentration).</td>
+            </tr>
+            <tr>
+              <td>Lobres temporaux</td>
+              <td>Génération de la mémoire et des émotions, analyse des évènements immédiats dans la mémoire à court et à long terme, intégration des sons et images pour reconnaître les individus et les objets.</td>
+            </tr>
+            <tr>
+              <td>Tronc cérébral</td>
+              <td>Contrôle les niveaux de conscience/vigilance, règle les fonctions corporelles essentielles (respiration, tension cardiaque,...), contribue à la posture et à l'équilibre.</td>
+            </tr>
+            <tr>
+              <td>Cervelet</td>
+              <td>Coordonne les mouvements corporels, interagit avec le tronc cérébral et l'oreille interne pour conférer un sens de l'équilibre, contribue au fonctions de la pensée (attention, langage, émotions).</td>
+            </tr>
+          </tbody>
+        </table>
+        <br>
+        <p class="sub-title"><strong>A. Évaluation du niveau de conscience</strong></p>
+        <p>L’état de conscience d’un patient est décrit en fonction de son degré de vigilance (ou niveau d’éveil) et de sa réactivité (ou capacité à répondre aux stimuli). Les différents états pouvant être rencontrés sont :</p>
+        <p>🔸 Conscience normale : Vigilance complète, réponses cohérentes et adaptées, cycle veille/sommeil préservé.</p>
+        <p>🔸 Somnolence / léthargie : Réveil possible par stimulation verbale ou légère, temps de réponses ralenties en restant adaptées, tendance au retour rapide au sommeil si absence de stimulation</p>
+        <p>🔸 Obnubilation : Réduction nette de la vigilance, Désorientation fréquente (temps, lieu, personnes), réponses lentes et parfois incohérentes, perte de vigilance si absence de stimulation</p>
+        <p>🔸 Stupeur / torpeur : Patient difficile à réveiller, ne répond qu’aux stimulus douloureux ou intenses, réponses de type motrices simples (gémissement, retrait)</p>
+        <p>🔸 Coma : pas de réponse volontaire, absence de conscience, réflexes du tronc cérébral préservés → FOUR ou Glasgow pour définir la profondeur</p>
+        <p>🔸 État végétatif / MCS / Syndrome d’enfermement / Mort cérébrale</p>
+        <br>
+        <p class="sub-title"><strong>B. Tests cognitifs</strong></p>
+        <p>Les tests cognitifs permettent d’évaluer les fonctions intellectuelles et le langage du patient. Il existe différents types de tests qui peuvent être réalisés rapidement au lit du patients, et d'autres un peu plus détaillés qui vont demander une consultation spécifiques. Pour une version rapide, il faudra principalement faire attention aux éléments suivants :</p>
+        <p><strong>Point d'attention — Test</strong></p>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Point d'attention</th>
+              <th>Test</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Orientation</td>
+              <td>Demander le nom du patient, la date du jour, le lieu.</td>
+            </tr>
+            <tr>
+              <td>Mémoire à court terme</td>
+              <td>Demander de se souvenir de 3 objets après un court intervalle de temps.</td>
+            </tr>
+            <tr>
+              <td>Mémoire à long terme</td>
+              <td>Demander un souvenir fort du patient (sa première voiture).</td>
+            </tr>
+            <tr>
+              <td>Calcul</td>
+              <td>Faire faire un calcul simple au patient.</td>
+            </tr>
+            <tr>
+              <td>Attention & concentration</td>
+              <td>Demander au patient d’épeler le mot “monde” à l’endroit puis à l’envers (ou tout autre mot de 5 lettres). Demander au patient de nommer des objets qui l’entourent.</td>
+            </tr>
+          </tbody>
+        </table>
+        <p>Si certains éléments soulèvent des difficultés pour le patient, il faudra les tenter de nouveau après avoir laissé un peu plus de temps de repos après son réveil. Si le problème persiste, il sera intéressant d'effectuer d'autres tests afin de déterminer la gravité des difficultés rencontrées avant de pouvoir tenter d'en déterminer la source et les potentielles causes.</p>
+        <br>
+        <p class="sub-title"><strong>C. Causes de l'état de conscience</strong></p>
+        <p>En neurologie et médecine d’urgence, la perte de conscience (ou altération brutale de la vigilance) est un symptôme critique. Elle peut être transitoire (syncope, crise d’épilepsie) ou prolongée (coma, état post-critique). Les principales causes sont les suivantes :</p>
+        <p>🔸 Neurologiques : crises d’épilepsie (perte de conscience brutale, confusion, éventuelle morsure de la langue ou incontinence), AVC (ischémique, hémorragique, proche tronc cérébral ou avec hémorragie massive), traumatisme crânien (contusion, hématome sous-dural ou extradural), méningite ou encéphalite, hydrocéphalie aigue</p>
+        <p>🔸 Cardiovasculaires : syncope vasovagale, trouble du rythme cardiaque, Embolie pulmonaire massive, Dissection aortique</p>
+        <p>🔸 Métaboliques ou toxiques : hypoglycémie sévère, hyponatrémie ou hypernatrémie, hypoxie ou Anoxie cérébrale, hypothermie, intoxications ou surdosage médicamenteux, consommation excessive d’alcool ou drogue, insuffisance hépatique ou rénale de type terminale</p>
+        <p>🔸 Autres causes : crise psychogène, syndrome de sevrage ou encéphalopathie de Wernicke, Tumeur cérébrale / processus expansif</p>
+        <br>
+        <p class="sub-title"><strong>Les examens possibles</strong></p>
+        <p><strong>A. IRM : Imagerie par Résonance Magnétique</strong></p>
+        <p>L’IRM va permettre d’examiner la circulation sanguine et de déterminer la santé des tissus, notamment en ce qui concerne le cerveau, le tronc cérébral, le cervelet et la moelle épinière.</p>
+        <p>Il permet de détecter : les AVC, les saignements / hémorragies / caillots, les anévrismes, les lésions de la moelle épinière, les tumeurs, les inflammations, les infections.</p>
+        <p>Il est important d’utiliser cet examen dans le cas où la personne présente des vertiges, maux de tête persistants ou troubles de la mémoire. Il est toutefois contre-indiqué en cas de claustrophobie ou de présence de corps métalliques dans l’organisme.</p><br>
+        <p><strong>B. EEG : électroencéphalogramme</strong></p>
+        <p>Permet de : détecter et localiser une activité électrique anormale du cerveau, localiser une tumeur, une inflammation une infection ou un saignement, diagnostiquer et surveiller l'épilepsie, la narcolepsie et l'oedème cérébral, surveiller le cerveau pendant une chirurgie cérébrale</p>
+        <p>Déroulé : nettoyer le cuir chevelu, fixer les électrodes sur le cuir chevelu à l'aide d'un gel conducteur ou bien d'un bonnet sur lesquels les électrodes sont déjà fixées, lire et interpréter l'activité électrique enregistrée par l'EEG</p><br>
+        <p><strong>C. EMG : électromyogramme</strong></p>
+        <p>Permet d’analyser l’activité : des fibres sensitives des nerfs, des muscles au repos et contractés, des fibres nerveuses motrices (qui conduisent les informations de la moelle épinière et du cerveau aux muscles).</p>
+        <p>Permet de comprendre : des douleurs musculaires (myalgies), des faiblesses musculaires (hypotonies), des fourmillements dans les membres.</p>
+        <p>Permet de diagnostiquer : des lésions nerveuses, des maladies neuromusculaires.</p>
+        <p>Déroulé : coller des électrodes (patchs) sur la peau, pour des résultats plus précis piquer des électrodes aiguilles dans la peau, demander au patient de contracter ou non ses muscles, diffuser brièvement des impulsions électriques de faible intensité au niveau des fibres nerveuses, interpréter les activité électriques sur l’écran de l’appareil.</p><br>
+        <p><strong>D. Ponction lombaire</strong></p>
+        <p>La ponction lombaire est un prélèvement de liquide céphalo-rachidien (LCR).</p>
+        <p>Permet de diagnostiquer : des maladies neurologiques ou auto-immunes chroniques qui touchent le système nerveux central; des encéphalites ou méningites; des leucémies, cancers du cerveau ou de la moelle épinière.</p>
+        <p>Contrindications : hypertension intracrânienne, thrombopénie sévère (baisse de plaquettes dans le sang), troubles de la coagulation.</p>
+        <p>Déroulé : nettoyer, désinfecter et anesthésier localement le dos, demander au patient de s’allonger sur le côté ou bien de s’assoir en courbant le dos, insérer l’aiguille à ponction lombaire entre les vertèbres dans le bas du dos, prélever du LCR, analyser le prélèvement.</p>
+        <br>
+        <p class="sub-title"><strong>Les troubles neurologiques</strong></p>
+        <p><strong>A. Migraine</strong></p>
+        <p>La migraine est une céphalée (mal de tête) récurrente qui survient par crises (minimum cinq crises). Son intensité est variable mais elle est souvent sévère, et elle est souvent aggravée par le mouvement.</p>
+        <p>Causes : dilatation des vaisseaux cérébraux, maladie neurovasculaire, alimentation, consommation de tabac, stimulation sensorielle excessive, stress, manque de sommeil, variation hormonale (variation du taux d'oestrogènes en particulier), hérédité etc...</p>
+        <p>Symptômes : fatigue, vertiges, nausées, vomissements, photophobie (sensibilité ou intolérance à la lumière), phonophobie (sensibilité ou intolérance au bruit et aux sons), osmophobie (sensibilité ou intolérance aux odeurs), visage pâle etc...</p>
+        <p>Diagnostique : bilan clinique avec examen neurologique approfondi</p>
+        <p>Traitement :</p>
+        <p>🔸 les antalgiques pour douleurs légères pouvant être associés à des AINS qui traitent spécifiquement les migraines.</p>
+        <p>🔸 les triptans lorsque les antalgiques classiques ne sont pas suffisant pour aider à faire passer la crise</p>
+        <p>🔸 Les dérivés de l'ergot de seigle pour des cas plus spécifiques ou si les tentatives précédentes ont échoué. Les effets indésirables et les risques de surdosages sont plus importants.</p>
+        <p>🔸 Le traitement de fond qui peut comprendre différentes familles de médicaments : des bêtabloquants, un antidépresseur, un antiépileptique, des antimigraineux spécifiques, des anticorps monoclonaux.</p>
+        <p>🔸 L'élimination de la cause, lorsque cela est possible</p><br>
+        <p><strong>B. Épilepsie</strong></p>
+        <p>L’épilepsie est un trouble cérébral chronique qui se caractérise par des crises récurrentes. Il s’agit d’une décharge électrique anormale et non régulée dans la substance grise corticale et qui en interrompt temporairement le fonctionnement.</p>
+        <p>Causes : trouble neurologique congénital, AVC, infection cérébrale, lésion cérébrale, œdème, consommation de certaines substances</p>
+        <p>Symptômes : perte de connaissance, trouble du langage, sensoriel, moteur ou de la mémoire</p>
+        <p>Diagnostique : bilan clinique, imagerie cérébrale, EEG, prise de sang, ponction lombaire</p>
+        <p>Traitement : traitement de la cause si possible, anti-convulsant à large spectre</p><br>
+        <p><strong>C. Accident vasculaire cérébral (AVC)</strong></p>
+        <p>L’AVC est un déficit neurologique soudain causé par une interruption de la circulation sanguine cérébrale.</p>
+        <p>Causes : occlusion d'une artère, embolie cérébrale, hémorragie cérébrale, inconnue</p>
+        <p>Symptômes : engourdissement d’un bras, d’une jambe ou du visage, déformation ou paralysie du visage, trouble de la parole, trouble de la conscience, trouble de la vision, maux de tête.</p>
+        <p>Diagnostique : score NIHSS, imagerie cérébrale, évaluation pour déterminer la cause</p>
+        <p>Traitement : stabilisation (assistance respiratoire, supplémentation en oxygène, traitement de l’hyperthermie et/ou hypoglycémie et/ou hyperglycémie), thrombolyse et/ou thrombectomie, médicaments antiplaquettaires, anticoagulants.</p><br>
+        <p><strong>D. Amnésie</strong></p>
+        <p>L’amnésie est une incapacité totale ou partielle à se souvenir d’expériences passées ou une incapacité à stocker de nouveaux souvenirs.</p>
+        <p>Elle peut être :</p>
+        <p>🔸 Rétrograde : le patient ne se souvient plus des événements précédents la cause de l'amnésie</p>
+        <p>🔸 Antérograde : le patient est incapable de stocker de nouveaux souvenirs après la cause</p>
+        <p>🔸 Permanente : comme après un trouble grave type AVC</p>
+        <p>🔸 Transitoire : comme suite à une lésion cérébrale traumatique</p>
+        <p>Causes : carence thiamine, lésion cérébrale traumatique, troubles convulsifs, anoxie globale (apport insuffisant d’oxygène) ou une ischémie (manque d’irrigation sanguine), encéphalite, démence dégénérative (ex : Alzheimer), intoxication médicamenteuse, tumeur hypothalamique, stress ou traumatisme psychologique</p>
+        <p>Diagnostique : tests neuropsychologiques, imagerie cérébrale (IRM, TDM) pour déterminer la cause</p>
+        <p>Traitement : de la cause</p><br>
+        <p><strong>E. Aphasie</strong></p>
+        <p>L’aphasie est un dysfonctionnement du langage, que ce soit dans sa compréhension ou son expression. Dans les deux cas, l’écriture du patient est aussi touchée.</p>
+        <p>Causes : Dans ces cas là, l'aphasie ne s'aggrave pas : AVC, traumatisme crânien, encéphalite, infarctus. Dans ces cas là, l'aphasie s'aggrave progressivement : tumeur, démence dégénérative (p.e. Alzheimer)</p>
+        <p>Diagnostique : tests neuropsychologiques, tests neurologiques, imagerie cérébrale pour déterminer la cause</p><br>
+        <p><strong>F. Dystonie</strong></p>
+        <p>La dystonie est caractérisée par des contractions musculaires soutenues ou intermittentes qui modifient la posture du corps ou provoquent des mouvements répétitifs de torsion.</p>
+        <p>Causes : des troubles dégénératifs ou métaboliques (par exemple la maladie de Wilson), les neurodégénérescences avec accumulation de fer dans le cerveau, la sclérose en plaques, les AVC, les ischémies cérébrales, des lésions cérébrales, la prise de certains médicaments.</p>
+        <p>Symptômes : contractions musculaires involontaires</p>
+        <p>Diagnostique : examen clinique, IRM</p>
+        <p>Traitement : médicaments myorelaxants, intervention neurchirurgicale de stimulation cérébrale profonde, injection de toxine botulique pour paralyser les muscles, kinésithérapie pour réapprendre certains gestes ou les adapter</p><br>
+        <p><strong>G. Abcès cérébral</strong></p>
+        <p>L’abcès cérébral est une collection de pus à l’intérieur du cerveau.</p>
+        <p>Causes : infection bactérienne crânienne, plaies pénétrantes (dont les interventions chirurgicales), causes inconnues</p>
+        <p>Symptômes : augmentation de la pression intracrânienne, céphalées, nausées, somnolence, convulsions</p>
+        <p>Diagnostique : imagerie (IRM, TDM)</p>
+        <p>Traitement : antibiotiques, drainage chirurgical</p><br>
+        <p><strong>H. Encéphalite</strong></p>
+        <p>L’encéphalite est une inflammation cérébrale résultant d’une invasion virale directe ou d’une complication immunologique.</p>
+        <p>Causes : infection virale</p>
+        <p>Symptômes : fièvre, céphalées, confusion mentale, convulsions</p>
+        <p>Diagnostique : ponction lombaire, imagerie</p>
+        <p>Traitement : médicaments antiviraux</p>
+      </div>
+    </div>
+  </div>
+</div>
+      <div data-accordion id="niv2-kine" class="category-card">
+  <div class="summary">🦵 Kinésithérapie</div>
+  <div class="category-body">
+    <div class="mini-body">
+      <div class="mini-list">
+        <div class="sub-title">Quantification du stress mécanique</div>
+        <p>En kinésithérapie, la quantification mécanique du stress s’intéresse surtout aux contraintes subies par le corps humain, notamment les muscles, les articulations et les tendons. Cela permet d’adapter les exercices de rééducation, d’éviter les surcharges ou de prévenir les blessures, par exemple chez les sportifs ou les patients en réadaptation. Ce sont ces contraintes que nous utilisons pour créer de l’adaptation et du progrès chez les patients. Pour être efficaces, ces contraintes doivent être mesurées et progressive, l’idée est de proposer des exercices adaptés pouvant répondre au besoin du patient.</p>
+    
+        <a href="https://imgshare.ouranos.pro/image/kine.b9Vmp"><img src="https://imgshare.ouranos.pro/images/2026/02/11/kine.png" alt="kine" border="0"></a>
+        <p>Le graphique ci-dessus illustre parfaitement cette quantification et nos exercices doivent prendre en compte cette manière de faire.</p>
+        <p>Un effort avec une intensité suffisante pour stimuler efficacement le corps mais limité pour ne pas engendrer de blessures supplémentaires. Il faut en permanence rester dans la zone de progrès et flirter au maximum avec la limite de la zone de danger.</p>
+
+        <br>
+        <div class="sub-title">Progression graduelle</div>
+        <p>Commencez par des exercices simples et progressez lentement vers des exercices plus avancés à mesure que les muscles, articulations et tendons se chauffent correctement.</p>
+        <div class="sub-title">Contrôle du mouvement</div>
+        <p>Insistez sur la qualité du mouvement plutôt que sur la quantité. Encouragez le patient à effectuer les exercices lentement et en toute sécurité, en évitant les mouvements brusques ou incontrôlés. Une série bien faite vaut toujours mieux que deux séries bâclées.</p>
+        <div class="sub-title">Symétrie bilatérale</div>
+        <p>Encouragez l'équilibre musculaire en travaillant le corps de manière symétrique, même si l’affection ne touche qu’une seule partie de l’organisme. Cela peut aider à prévenir les déséquilibres musculaires et les compensations pouvant mener à de futurs blessures.</p>
+        <div class="sub-title">Renforcement global</div>
+        <p>Incluez une variété d'exercices de renforcement pour les muscles environnants pour assurer une réhabilitation complète et équilibrée.</p>
+        <div class="sub-title">Travail proprioceptif</div>
+        <p>Intégrez des exercices qui améliorent la proprioception et l'équilibre, utiliser des planches proprioceptives ou des surfaces instables, pour aider à restaurer la stabilité articulaire.</p>
+        <div class="sub-title">Fréquence et intensité</div>
+        <p>Recommandez des séances d'exercices régulières, idéalement plusieurs fois par semaine, en augmentant progressivement l'intensité au fil du temps pour stimuler l'adaptation musculaire et la récupération.</p>
+        <div class="sub-title">Surveillance et ajustement</div>
+        <p>Surveillez attentivement la réponse du patient aux exercices et ajustez le programme de rééducation en fonction de sa tolérance et de ses progrès. Encouragez la communication ouverte et le retour d'information sur les sensations ressenties pendant les exercices.</p>
+        <br>
+        <div class="sub-title">Exemple d'utilisation de la salle de rééducation</div>
+        <table class="info-table">
+          <thead>
+            <tr>
+              <th>Zone</th>
+              <th>Exercices</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Exercices en piscine</td>
+              <td>🔸 Longueur / Largeur<br>🔸 Utilisation des marches</td>
+            </tr>
+            <tr>
+              <td>Exercices sur le plateau technique</td>
+              <td>🔸 Utilisation des barres parallèles (marche simple ou franchissement)<br>🔸 Step au milieu de la salle<br>🔸 Tapis de course pour marche progressive<br>🔸 Haltères et autres matériel de musculation<br>🔸 Parcours de marche / trot</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="sub-title">Déroulé d'une séance type</div>
+        <p>Lecture du dossier patient en amont, prendre en compte les contres indications médicales, préparation d'une liste d’exercices.</p>
+        <p>Séance d’échauffement et d’évaluation de la douleur avec les retours du patient.</p>
+        <p>Déroulement des exercices de la séance en fonction des sensations du patient</p>
+        <p>Retour au calme avec des exercices dégressifs en intensité</p>
+        <p>Massage de la zone douloureuse pour soulager les muscles ou tendons aillant travailler durant la séance.</p>
+        <p>Facturation de fin et prise d’un prochain rdv si besoin.</p>
+        <p>Création d’une entrée de consultation Kiné sur le panel</p>
+      </div>
+    </div>
+  </div>
+</div>
+      <div data-accordion id="niv2-transplant" class="category-card">
+  <div class="summary">🫀 Chirurgie transplantatoire</div>
+  <div class="category-body">
+    <div class="mini-body">
+      <div class="mini-list">
+        <div class="sub-title">Commun : Phase pré-opératoire</div>
+        <p>Suite à l’ablation de l’organe, il faut déjà une fois le patient réveillé :</p>
+        <p>🔸 Lui faire les recommandations nécessaires pour son train de vie après l’ablation et avant la greffe (voir ci-après)</p>
+        <p>🔸 Prévoir une date de greffe (minimum 2 jours après l’ablation, et ne pas dépasser 1 semaine sauf cas particulier)</p>
+
+        <div class="sub-title">Commun : Phase per-opératoire</div>
+        <p>🔸 Demander à un responsable ou plus de commander l’organe nécessaire maximum 24h et minimum 4 h à l’avance (pour respecter les délais de péremption et de livraison).</p>
+        <p>🔸 Une fois l’organe récupéré, des analyses de compatibilité peuvent être effectuées entre le donneur et le receveur si nécessaire.</p>
+        <p>🔸 Juste avant l’opération, demander au patient ses activités durant les 24 dernières heures et vérifier son dossier médical s’il n’a pas eu d’anesthésie. Si santé trop fragile : repousser la greffe.</p>
+
+        <div class="sub-title">Commun : Phase post-opératoire</div>
+        <p>Au réveil du patient, peu importe la greffe :</p>
+        <p>🔸 Lui demander comment il se sent.</p>
+        <p>🔸 Lui expliquer comment s’est passé l’opération.</p>
+        <p>🔸 Vérifier les constantes.</p>
+        <p>🔸 Mettre des ITT lourdes (min. 4H ou 6H)</p>
+        <p>🔸 Débuter le traitement anti-rejet</p>
+
+        <div class="sub-title">Pulmonaire : Phase pré-opératoire</div>
+        <p>Le patient aura une capacité respiratoire amoindrie et se fatiguera plus vite.</p>
+        <p>🔸 Proposer au patient un inhalateur pour ses déplacements.</p>
+        <p>🔸 Lui recommander de moins courir et de faire moins d’efforts et d’activité physique en général.</p>
+        <p>🔸 Lui recommander de ne pas fumer jusqu’à la greffe.</p>
+
+        <div class="sub-title">Pulmonaire : Phase per-opératoire</div>
+        <p>🔸 MINIMUM 2 MEDECINS</p>
+        <p>🔸 Mettre le patient sous anesthésie générale via perfusion.</p>
+        <p>🔸 Intubation du patient pour maintenir la respiration artificielle.</p>
+        <p>🔸 Monitorer le patient avec l’électrocardiogramme et vérifier ses constantes tout le long de l’opération (notamment sa capacité respiratoire).</p>
+        <p>🔸 Nettoyage de la zone à ouvrir (passer sous la cage thoracique, derrière le pectoral droit ou gauche selon l’organe à greffer).</p>
+        <p>🔸 Incision et pose d’écarteurs.</p>
+        <p>🔸 Positionner l’organe et le greffer aux artères et à la trachée avec des sutures</p>
+        <p>🔸 Déclamper les artères et la trachée.</p>
+        <p>🔸 Vérifier que le poumon commence correctement son activité</p>
+        <p>🔸 Retirer les écarteurs et recoudre l’incision</p>
+        <p>🔸 Mettre des bandages et des pansements sur la plaie.</p>
+        <p>🔸 Retirer l’intubation et constater la reprise de la respiration des deux poumons.</p>
+        <p>🔸 Arrêter l'anesthésie et amener le patient en salle de réveil.</p>
+
+        <div class="sub-title">Pulmonaire : Phase post-opératoire</div>
+        <p>🔸 Prévoir les post-op dès le réveil</p>
+        <p>🔸 Minimum 3 post-op dans les 5 jours qui suivent la greffe, puis POTENTIELLEMENT une dernière de contrôle à J+7.</p>
+        <p>🔸 1ere Post-op (H+X) :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet (si post-op le lendemain de la greffe)</p>
+        <p>  - Vérifier la respiration</p>
+        <p>  - Vérifier les sutures et changer les bandages.</p>
+        <p>🔸 2eme Post-op :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Vérifier la respiration</p>
+        <p>  - Faire des exercices de respiration</p>
+        <p>  - Vérifier et retirer les sutures et bandages</p>
+        <p>🔸 3eme Post-op :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Vérifier la respiration</p>
+        <p>  - Exercices de respiration.</p>
+        <p>  - Si RAS arrêt du suivi.</p>
+
+        <div class="sub-title">Rénal : Phase pré-opératoire</div>
+        <p>Le patient aura une soif plus importante, devant hydrater son rein régulièrement.</p>
+        <p>Proposer des dialyses au patient jusqu’à sa greffe (non obligatoire, à voir selon le contexte)</p>
+        <p>Lui rappeler de boire, régulièrement.</p>
+        <p>Une autre déshydratation peut entraîner la perte de son autre rein et être fatale</p>
+        <p>Lui recommander de ne pas boire d’alcool jusqu’à la greffe.</p>
+
+        <div class="sub-title">Rénal : Phase per-opératoire</div>
+        <p>MINIMUM 2 MEDECINS</p>
+        <p>Mettre le patient sous anesthésie générale via perfusion ou par gaz.</p>
+        <p>Monitorer le patient avec l’électrocardiogramme et vérifier ses constantes tout le long de l’opération.</p>
+        <p>Nettoyage de la zone à ouvrir (passer par le bas-ventre, dans la fosse iliaque droite ou gauche selon l’organe à greffer).</p>
+        <p>Incision et pose d’écarteurs.</p>
+        <p>Positionner l’organe et le greffer aux artères et aux voies urinaires avec des sutures</p>
+        <p>Déclamper les artères et les voies urinaires.</p>
+        <p>Vérifier que le rein reprend des couleurs et débute son activité</p>
+        <p>Retirer les écarteurs et recoudre l’incision</p>
+        <p>Mettre des bandages et des pansements sur la plaie.</p>
+        <p>Vérifier sur le monitoring les constantes du patient et la prise d’activité du rein transplanté.</p>
+        <p>Arrêter l’anesthésie et amener le patient en salle de réveil.</p>
+
+        <div class="sub-title">Rénal : Phase post-opératoire</div>
+        <p>Prévoir les post-op dès le réveil</p>
+        <p>Minimum 3 post-op dans les 5 jours qui suivent la greffe, puis POTENTIELLEMENT une dernière de contrôle à J+7.</p>
+        <p>🔸 1ere Post-op (H+X) :</p>
+        <p>  - Scan de contrôle (vérifier si gonflement ou atrophie du rein)</p>
+        <p>  - Donner le traitement anti-rejet (si post-op le lendemain de la greffe)</p>
+        <p>  - Analyse urinaire (et vérifier si le patient urine correctement)</p>
+        <p>  - Vérifier les sutures et changer les bandages.</p>
+        <p>🔸 2eme Post-op :</p>
+        <p>  - Scan de contrôle (vérifier si gonflement ou atrophie du rein)</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Vérifier si le patient urine correctement, si pas de douleur abdominale ou de fièvre</p>
+        <p>  - Vérifier et retirer les sutures et bandages</p>
+        <p>🔸 3eme Post-op :</p>
+        <p>  - Scan de contrôle (vérifier si gonflement ou atrophie du rein)</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Vérifier si le patient urine correctement, si pas de douleur abdominale ou de fièvre</p>
+        <p>  - Analyse urinaire</p>
+        <p>  - Si RAS arrêt du suivi.</p>
+
+        <div class="sub-title">Hépatique : Phase pré-opératoire</div>
+        <p>Le patient aura une faim plus importante et devra se restaurer plus régulièrement.</p>
+        <p>Lui rappeler de manger régulièrement, et de manière équilibrée.</p>
+        <p>Eviter ce qui est trop calorique ou trop acide.</p>
+        <p>Lui rappeler de ne SURTOUT pas boire d’alcool.</p>
+
+        <div class="sub-title">Hépatique : Phase per-opératoire</div>
+        <p>🔸 MINIMUM 2 MEDECINS</p>
+        <p>🔸 Mettre le patient sous anesthésie générale via perfusion ou par gaz.</p>
+        <p>🔸 Monitorer le patient avec l’électrocardiogramme et vérifier ses constantes tout le long de l’opération.</p>
+        <p>🔸 Nettoyage de la zone à ouvrir (passer sous les côtes et le sternum).</p>
+        <p>🔸 Incision et pose d’écarteurs.</p>
+        <p>🔸 Positionner l’organe et le greffer aux artères et aux vaisseaux avec des sutures.</p>
+        <p>🔸 Déclamper les artères et les vaisseaux sanguins.</p>
+        <p>🔸 Nettoyer l’abdomen d’éventuels fluides (sang, bile) qui peuvent s’accumuler.</p>
+        <p>🔸 Vérifier que le foie est alimenté en sang et en bile, et reprend progressivement son activité</p>
+        <p>🔸 Retirer les écarteurs et recoudre l’incision</p>
+        <p>🔸 Mettre des bandages et des pansements sur la plaie.</p>
+        <p>🔸 Vérifier sur le monitoring l’activité du foie et les constantes du patient.</p>
+        <p>🔸 Arrêter l’anesthésie et amener le patient en salle de réveil.</p>
+
+        <div class="sub-title">Hépatique : Phase post-opératoire</div>
+        <p>Prévoir les post-op dès le réveil</p>
+        <p>🔸 Au réveil :</p>
+        <p>  - mettre en place un suivi de l’alimentation saine et équilibrée, en accord avec la greffe.</p>
+        <p>  - Pas d’alcool ou de stupéfiants jusqu’à la fin des post-op</p>
+        <p>🔸 Minimum 3 post-op dans les 5 jours qui suivent la greffe, puis POTENTIELLEMENT une dernière de contrôle à J+7.</p>
+        <p>🔸 1ere Post-op (H+X) :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet (si post-op le lendemain de la greffe)</p>
+        <p>  - Test sanguin</p>
+        <p>  - Vérifier les sutures et changer les bandages</p>
+        <p>  - Suivi de l’alimentation</p>
+        <p>🔸 2eme Post-op :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Tests sanguins</p>
+        <p>  - Suivi de l’alimentation</p>
+        <p>  - Vérifier et retirer les sutures et bandages</p>
+        <p>🔸 3eme Post-op :</p>
+        <p>  - Scan de contrôle</p>
+        <p>  - Donner le traitement anti-rejet</p>
+        <p>  - Tests sanguins</p>
+        <p>  - Suivi de l’alimentation</p>
+        <p>  - Si RAS arrêt du suivi.</p>
+      </div>
+    </div>
+  </div>
+</div>
+      <div data-accordion id="niv2-legale" class="category-card">
+        <div class="summary">☠️ Médecine légale</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <p>Créer l’entrée “médico-légal” dans le dossier du patient uniquement une fois que le rapport médico-légal est prêt.</p>
+              <p>Installer le défunt dans la salle d'opération 5 et procéder à son l'examen complet.</p>
+              <br>
+              <blockquote>
+                <strong>Rapport médico-légal complet :</strong><br>
+                🧍‍♂️ Examen Externe<br>
+                Identité complète :<br>
+                Sexe :<br>
+                Contexte de la prise en charge :<br><br>
+                Signes vitaux à l’arrivée des secours :<br>
+                absence de pouls, absence de respiration, non-réactif aux stimuli.<br><br>
+                ➤ Réactions aux soins d’urgence :<br>
+                Aucune réponse au massage cardiaque externe<br>
+                Défibrillation x3 sans reprise cardiaque<br>
+                Adrénaline IV administrée, sans effet.<br><br>
+                ➤ Compte rendu des plaies visibles :<br>
+                →<br>
+                →<br>
+                →<br><br>
+                🩻 Compte rendu détaillé de chaque blessure d'après le scanner :<br>
+                →<br>
+                →<br>
+                →<br>
+                Si blessure par balle, type de calibre : petit, intermédiaire ou gros<br><br>
+                🧪 Résultats des Analyses :<br>
+                ⦁ Alcoolémie : 0,00 g/L ou autre<br>
+                ⦁ Dépistage stupéfiants : Positif/Négatif<br><br>
+                ⚖️ Conclusion Médico-Légale<br>
+                Décès prononcé à :<br>
+                le :<br>
+                Cause du décès :
+              </blockquote>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="niv2-trauma" class="category-card">
+        <div class="summary">⚕️ Trauma Team</div>
+        <div class="category-body">
+          <div class="mini-body">
+            <div class="mini-list">
+              <div class="sub-title">Lead Trauma Team – Processus d’intervention</div>
+              <p><strong>Objectifs de cette certification</strong></p>
+              <p>🔸 Soulager les Leads Opérationnels FDO en les déchargeant de la gestion médicale directe.</p>
+              <p>🔸 Instaurer une communication fluide entre les médecins, avec une structure claire de commandement médical.</p>
+              <p>🔸 Intégrer pleinement le médecin dans la boucle opérationnelle tactique sans entraver la mission.</p>
+              <p>🔸 Optimiser la prise en charge des blessés pour augmenter les chances de survie.</p>
+              <br>
+              <p><strong>Rôle spécifique du Médecin Lead Trauma Team</strong></p>
+              <p>Le médecin Lead Trauma :</p>
+              <p>🔸 Est le référent médical tactique sur zone d’opération.</p>
+              <p>🔸 Travaille en interface directe avec le lead opé FDO.</p>
+              <p>🔸 Dirige la trauma team et les soins en contexte tactique.</p>
+              <p>🔸 Oriente et coordonne les extractions médicales.</p>
+              <br>
+              <div class="sub-title">PHASE 1 : Arrivée et intégration dans l'opération</div>
+              <p>🟢 Conditions : Déploiement déclenché ou en anticipation d’une situation potentiellement violente.</p>
+              <p><strong>Actions du médecin Trauma :</strong></p>
+              <p>🔸 Se rend sur zone opérationnelle, dans un véhicule dédié, qui ne sert pas à transporter des blessés.</p>
+              <p>🔸 Annonce sa présence à la radio et au lead opérationnel FDO.</p>
+              <p>🔸 Se place physiquement aux côtés du lead opé FDO, sans gêner l’action tactique.</p>
+              <p>🔸 Ne transporte pas de blessés et n’assure pas d’évacuation, son rôle est coordination et prise de décision.</p>
+              <br>
+              <div class="sub-title">PHASE 2 : Analyse tactico-médicale de la situation</div>
+              <p>🟡 Objectif : Évaluer le besoin d’une prise en charge médicale active.</p>
+              <p><strong>Si aucune victime :</strong></p>
+              <p>🔸 Le médecin collecte les infos nécessaires, se tient prêt.</p>
+              <p>🔸 Si aucune urgence ne se présente à la fin de l’opération, il quitte la zone ou reprend sa disponibilité.</p>
+              <p><strong>Si victime(s) potentielle(s) :</strong></p>
+              <p>🔸 Passage immédiat en Phase 3.</p>
+              <br>
+              <div class="sub-title">PHASE 3 : Prise en charge médicale tactique sous contrainte</div>
+              <p>🔴 Début de la réponse médicale active</p>
+              <p><strong>Actions clés du médecin Trauma :</strong></p>
+              <p>Sans interférer, il :</p>
+              <p>🔸 Recueille les infos médicales de la part du lead opé FDO</p>
+              <p>🔸 Fournit les updates médicaux en retour</p>
+              <p>Il commence la prise en charge des blessés, tout en restant dans la boucle tactique.</p>
+              <p><strong>Communication vers l’arrière :</strong></p>
+              <p>Informe son lead terrain :</p>
+              <p>🔸 Nombre de blessés</p>
+              <p>🔸 Besoin en ambulances / renforts médicaux</p>
+              <p>🔸 Définition d’une zone safe pour les véhicules médicaux</p>
+              <p><strong>Coordination sur zone :</strong></p>
+              <p>🔸 Reste en contact permanent avec le lead FDO</p>
+              <p>🔸 À l’arrivée des unités médicales, prend le commandement de la prise en charge médicale</p>
+              <p>🔸 Coordonne l'extraction des blessés vers la zone safe</p>
+              <br>
+              <p class="sub-title"><strong>TRIAGE ET GESTION DES SOINS Sous son autorité :</strong></p>
+              <p>Application immédiate d’un triage en 3 niveaux :</p>
+              <p>🔸 Soins prioritaires (urgence vitale)</p>
+              <p>🔸 Soins attentionnés (non immédiats)</p>
+              <p>🔸 Soins non prioritaires (attente ou décès)</p>
+              <p>🔸 Mise en œuvre des premiers secours sur place si sécurisé</p>
+              <p>🔸 Gestion de l’espace, du temps et des ressources médicales disponibles</p>
+              <br>
+              <div class="sub-title">POUVOIRS SPÉCIAUX DU MÉDECIN TRAUMA LEAD</div>
+              <p>🎯 En fonction de la gravité de la situation, il peut :</p>
+              <p><strong>Influencer les négociations tactiques, par exemple :</strong></p>
+              <p>🔸 Demander un cessez-le-feu pour sécuriser une extraction</p>
+              <p>🔸 Imposer une temporalité médicale si vie en jeu</p>
+              <p>🔸 Agir comme acteur humanitaire protégé, dans le cadre défini par les FDO</p>
+              <br>
+              <div class="sub-title">PRISE D'OTAGE</div>
+              <p>En situation de prise d’otages, plusieurs étapes doivent être rigoureusement respectées pour assurer la prise en charge des victimes.</p>
+              <p>🔸 Checkpoint 1 : Attente de l’intervention des FDOs</p>
+              <p>Ne pas intervenir avant d’avoir reçu l’autorisation des forces de l’ordre. Une fois le feu vert donné, procéder à la vérification de l’état physique et mental des otages.</p>
+              <p>🔸 Checkpoint 2 : Création des dossiers</p>
+              <p>Ouvrir un dossier individuel pour chaque otage, classé dans la catégorie "Autre...", afin d’assurer un suivi administratif et médical précis.</p>
+              <p>🔸 Checkpoint 3 : Soins immédiats si besoin</p>
+              <p>Apporter les soins nécessaires selon l’état de chaque otage (blessures, choc, etc.).</p>
+              <p>🔸 Checkpoint 4 : Après la libération</p>
+              <p>Redemander à chaque otage s’il va bien et évaluer de nouveau son état.</p>
+              <p>🔸 Checkpoint 5 : Suivi psychologique</p>
+              <p>Proposer une consultation avec un psychologue si l’otage en exprime le besoin ou si son état le justifie.</p>
+              <p>🔸 Checkpoint 6 : Soins complémentaires</p>
+              <p>Effectuer tout soin supplémentaire nécessaire post libération.</p>
+              <br>
+              <div class="sub-title">PRATIQUE</div>
+              <p>Simulation de situation à gérer (simulées ou non)</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<!-- ======================= Cursus de niveau 3 ======================= -->
+<div data-accordion id="niv3" class="t-cyan main-section">
+  <div class="summary section-summary">
+    📌 Les fiches pratiques
+    <span class="summary-sub">
+      <span class="toc1">
+        <a class="category-link" href="#niv3-module1" data-target="niv3-module1">⌚ Tableau des ITT</a>
+        <a class="category-link" href="#niv3-module2" data-target="niv3-module2">🛏️ Plan des Urgences</a>
+        <a class="category-link" href="#niv3-module3" data-target="niv3-module3">⚡ Protocole BlackOut</a>
+        <a class="category-link" href="#niv3-module4" data-target="niv3-module4">🛡️ Protocole de prise en charge de blessés par balles multiples</a>
+      </span>
+    </span>
+  </div>
+
+  <div class="content">
+    <div class="category-cards">
+      <div data-accordion id="niv3-module1" class="category-card">
+        <div class="summary">⌚ Fiche pratique des ITT</div>
+        <div class="category-body">
+          <table class="info-table table-narrow table-itt">
+            <thead>
+              <tr>
+                <th>Blessure</th>
+                <th>ITT conseillée</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><td>🦴 Fracture nette</td><td>1h-2h</td></tr>
+              <tr><td>🦴 Fracture avec déplacement</td><td>2h-3h</td></tr>
+              <tr><td>🦴 Luxation</td><td>0h-1h</td></tr>
+              <tr><td>🔥 Brûlure 1er degré</td><td>0h</td></tr>
+              <tr><td>🔥 Brûlure 2e degré</td><td>1h-3h</td></tr>
+              <tr><td>🔥 Brûlure 3e degré</td><td>3h-5h</td></tr>
+              <tr><td>🐅 Morsure animale</td><td>2h-4h</td></tr>
+              <tr><td>🩸 Hématome sous-dural</td><td>3h-4h</td></tr>
+              <tr><td>🔫 Blessure par balle - Petit calibre</td><td>2h-4h</td></tr>
+              <tr><td>🔫 Blessure par balle - Calibre intermédaire</td><td>4h-6h</td></tr>
+              <tr><td>🔫 Blessure par balle - Gros calibre</td><td>4h-8h</td></tr>
+              <tr><td>🔪 Blessure par arme blanche</td><td>4h-6h</td></tr>
+              <tr><td>🫁 Rupture d'organe interne</td><td>4h-6h</td></tr>
+              <tr><td>🫁 Ablation / greffe d'organe</td><td>6h-12h</td></tr>
+              <tr><td>🫁 Suffocation (noyade, gazage)</td><td>2h-6h</td></tr>
+              <tr><td>🍺 Coma éthylique / overdose</td><td>1 heure d'observation sans ITT</td></tr>
+              <tr><td>😵‍💫 Stress élevé à répétition</td><td>24h-48h</td></tr>
+            </tbody>
+          </table>
+          <table class="info-table table-narrow table-itt">
+            <thead>
+              <tr>
+                <th>⬇️ Facteurs aggravants</th>
+                <th>⬆️ Facteurs atténuants</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>🔸 Coma<br>🔸 Long temps d'attente avant la prise en charge<br>🔸 Nombreuses blessures récentes<br>🔸 Patient déjà en ITT</td>
+                <td>🔸 Port d'un GPB (blessure par balle)<br>🔸 Port d'un casque (AVP)<br>🔸 Premiers secours effectués</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+      <div data-accordion id="niv3-module2" class="category-card">
+        <div class="summary">⭐ Plan des Urgences</div>
+        <div class="category-body">
+          <div class="mini-list">
+<a href='https://postimg.cc/z3jnDkRJ' target='_blank'><img class="img-center" src='https://i.postimg.cc/Nfhb4Jsr/Plan.png' border='0' alt='Plan' style="width:500px;height:auto"></a>
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="niv3-module3" class="category-card">
+        <div class="summary">⭐ Protocole BlackOut</div>
+        <div class="category-body">
+          <div class="mini-list">
+            <img class="img-center" src="https://imgshare.ouranos.pro/images/2026/01/25/Points-d-accueil.jpg" alt="Points d accueil" border="0" style="width:1000px;height:auto">
+          </div>
+        </div>
+      </div>
+      <div data-accordion id="niv3-module4" class="category-card">
+        <div class="summary">⭐ Protocole SASP</div>
+        <div class="category-body">
+          <div class="mini-list">
+            <p>Contenu à définir.</p>
+            <img class="img-center" src="https://imgshare.ouranos.pro/images/2025/11/30/w9g8ks.webp" alt="Illustration fouille du patient" style="width:1200px;height:auto">
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script>
+  document.querySelectorAll('.category-link').forEach((link) => {
+    link.addEventListener('click', (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      const targetId = link.dataset.target;
+      const card = document.getElementById(targetId);
+      if (!card) return;
+      const container = link.closest('[data-accordion]');
+      if (container) container.classList.add('open');
+      const group = card.closest('.category-cards');
+      if (group) {
+        if (card.classList.contains('open')) {
+          group.querySelectorAll('.category-card').forEach((item) => {
+            item.classList.remove('open');
+          });
+          return;
+        }
+        group.querySelectorAll('.category-card').forEach((item) => {
+          item.classList.remove('open');
+        });
+      } else {
+        document.querySelectorAll('.category-card').forEach((item) => {
+          item.classList.remove('open');
+        });
+      }
+      card.classList.add('open');
+      card.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
+
+  document.querySelectorAll('[data-accordion] > .summary').forEach((summary) => {
+    summary.addEventListener('click', (e) => {
+      if (e.target.closest('.category-link')) return;
+      const accordion = summary.parentElement;
+      if (accordion && accordion.id === 'service' && !e.target.closest('.summary-toggle')) {
+        e.preventDefault();
+        return;
+      }
+      accordion.classList.toggle('open');
+    });
+  });
+</script>
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
