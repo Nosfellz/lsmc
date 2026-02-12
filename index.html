@@ -43,7 +43,7 @@
   .toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:8px}
   .toc1{margin-top:15px;margin-bottom:15px;display:flex;flex-wrap:wrap;gap:15px}
   .summary-sub{display:block;font-weight:400;font-size:15px}
-  .toc1 a{color:var(--nav-text);text-decoration:none;border:1px solid var(--nav-pill-border);background:var(--nav-pill-bg);padding:10px 20px;border-radius:999px;font-weight:600;font-size:16px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:var(--nav-pill-shadow),inset 0 -2px 0 var(--nav-accent,rgba(60,54,141,.25));transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
+  .toc1 a{color:var(--nav-text);text-decoration:none;border:1px solid var(--nav-pill-border);background:var(--nav-pill-bg);padding:12px 22px;border-radius:999px;font-weight:600;font-size:15px;backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:var(--nav-pill-shadow),inset 0 -2px 0 var(--nav-accent,rgba(60,54,141,.25));transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
   .toc1 a:hover{transform:translateY(-1px);background:var(--nav-pill-hover-bg);border-color:var(--nav-pill-hover-border);box-shadow:0 10px 20px rgba(20,30,22,.16),inset 0 -2px 0 var(--nav-accent,rgba(60,54,141,.45))}
   .toc1 a:active{transform:translateY(0);box-shadow:var(--nav-pill-active-shadow),inset 0 -2px 0 var(--nav-accent,rgba(60,54,141,.25))}
   .toc1 a[data-target="mg"]{--nav-accent:#1f5c3e}
@@ -68,6 +68,8 @@
   [data-accordion]{margin:16px 0;border:1px solid var(--border);border-radius:14px;overflow:hidden;background:var(--surface);box-shadow:var(--shadow)}
   .summary{padding:14px 16px;font-weight:600;font-size:20px;cursor:pointer;user-select:none;color:var(--text);font-family:"IBM Plex Serif","Georgia",serif}
   .main-section{overflow:visible}
+  .main-section>.summary{border-radius:14px 14px 0 0;overflow:hidden}
+  .main-section:not(.open)>.summary{border-radius:14px}
   .section-summary{position:sticky;top:0;z-index:90;box-shadow:0 6px 16px rgba(20,30,22,.06)}
   [data-accordion].open>.summary{border-bottom:1px solid var(--border)}
   .content{padding:14px 16px;background:var(--surface2)}
@@ -96,7 +98,7 @@
 
   /* Tableau (grille salariale) */
   .category-cards{display:flex;flex-direction:column;gap:12px}
-  .category-card{margin:0;border:1px solid var(--card-border);border-radius:14px;background:var(--card-bg);box-shadow:0 6px 16px rgba(20,30,22,.06);scroll-margin-top:120px}
+  .category-card{margin:0;border:1px solid var(--card-border);border-radius:14px;overflow:hidden;background:var(--card-bg);box-shadow:0 6px 16px rgba(20,30,22,.06);scroll-margin-top:120px}
   .category-card>.summary{position:relative;background:var(--toc-bg);color:var(--card-title);font-size:18px;font-weight:500;padding-left:20px}
   .category-card>.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:4px;background:var(--card-accent)}
   .category-card.open{background:var(--card-open)}
@@ -114,7 +116,7 @@
   @media(max-width:640px){
     .row-2,.row-3,.row-4{grid-template-columns:1fr}
   }
-  .mini-card{margin:0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:12px;overflow:hidden;box-shadow:none}
+  .mini-card{margin:0;background:var(--card-bg);border:1px solid var(--card-border);border-radius:14px;overflow:hidden;box-shadow:none}
   .mini-card>.summary{position:relative;background:var(--toc-bg);color:var(--card-title);font-weight:500;font-size:16px;padding:12px 14px 12px 18px;cursor:pointer}
   .mini-card>.summary::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:var(--card-accent)}
   .mini-card.open{background:var(--card-open)}
@@ -124,7 +126,7 @@
   .mini-list p{margin:4px 0}
   blockquote{margin:8px 0 0;padding:8px 10px;border-left:3px solid var(--card-accent);background:var(--card-open);border-radius:8px;color:var(--card-muted);font-size:13px}
   .category-card:hover,.mini-card:hover{border-color:var(--card-accent)}
-  .board{border:1px solid var(--card-border);border-radius:12px;overflow:hidden;background:var(--card-bg)}
+  .board{border:1px solid var(--card-border);border-radius:14px;overflow:hidden;background:var(--card-bg)}
   .board-header{display:flex;align-items:center;gap:8px;padding:12px 14px;background:#122118;color:var(--card-title);font-weight:600}
   .table-header{display:grid;grid-template-columns:220px 1fr;gap:12px;padding:10px 14px;background:#0f1a14;color:var(--card-muted);font-size:12px;text-transform:uppercase;letter-spacing:.04em}
   .group-row{display:flex;align-items:center;gap:8px;padding:10px 14px;font-weight:600;color:var(--card-title);background:#14261d;border-top:1px solid var(--card-border)}
@@ -158,7 +160,7 @@
     h1{font-size:24px}
     .subtitle{font-size:14px}
     .summary{font-size:18px}
-    .toc1 a{padding:8px 14px;font-size:14px}
+    .toc1 a{padding:10px 16px;font-size:16px}
     .nav-toggle{padding:7px 11px;font-size:12px}
     .content{padding:12px}
     .category-body{padding:10px 12px}
@@ -171,7 +173,7 @@
     .mini-card>.summary{font-size:15px}
     .summary-sub{font-size:14px}
     .toc1{gap:10px}
-    .toc1 a{padding:8px 12px;border-radius:14px}
+    .toc1 a{padding:10px 14px;border-radius:14px}
     .content{padding:10px}
     .category-body{padding:10px}
     .mini-body{padding:8px 12px}
@@ -1959,7 +1961,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
         </div>
       </div>
       <div data-accordion id="niv3-module2" class="category-card">
-        <div class="summary">🛏️ Plan des Urgences</div>
+        <div class="summary">⭐ Plan des Urgences</div>
         <div class="category-body">
           <div class="mini-list">
 <a href='https://postimg.cc/z3jnDkRJ' target='_blank'><img class="img-center" src='https://i.postimg.cc/Nfhb4Jsr/Plan.png' border='0' alt='Plan' style="width:500px;height:auto"></a>
@@ -1967,7 +1969,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
         </div>
       </div>
       <div data-accordion id="niv3-module3" class="category-card">
-        <div class="summary">⚡ Protocole BlackOut</div>
+        <div class="summary">⭐ Protocole BlackOut</div>
         <div class="category-body">
           <div class="mini-list">
             <img class="img-center" src="https://imgshare.ouranos.pro/images/2026/01/25/Points-d-accueil.jpg" alt="Points d accueil" border="0" style="width:1000px;height:auto">
@@ -1975,7 +1977,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
         </div>
       </div>
       <div data-accordion id="niv3-module4" class="category-card">
-        <div class="summary">🛡️ Protocole de prise en charge de blessés par balles multiples</div>
+        <div class="summary">⭐ Protocole SASP</div>
         <div class="category-body">
           <div class="mini-list">
             <p>Contenu à définir.</p>
@@ -2034,9 +2036,6 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
 
 </body>
 </html>
-
-
-
 
 
 
