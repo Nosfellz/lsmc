@@ -2,7 +2,7 @@
 <html lang="fr">
 <head>
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1.0">
-<title>📘 Les Cursus & Formations</title>
+<title>📘 Formations & Cursus du LSMC</title>
 <style>
   @import url('https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Serif:wght@500;600&display=swap');
   :root{
@@ -27,6 +27,10 @@
   h1{margin:0 0 6px;font-size:28px;font-family:"IBM Plex Serif","Georgia",serif}
   .subtitle{margin:0 0 14px;color:var(--muted)}
   .header{padding:18px;border-radius:14px;background:var(--header-bg);border:1px solid var(--border);box-shadow:var(--shadow)}
+  .header-title-row{display:flex;flex-direction:row;align-items:center;gap:10px;margin-bottom:8px}
+  .header-title-row h1{margin:0}
+  .header-logo-link{display:inline-flex;line-height:0}
+  .header-logo{width:84px;height:84px;object-fit:contain}
   .nav-controls{margin-top:10px;display:flex;flex-wrap:wrap;gap:10px}
   .nav-toggle{border:1px solid var(--border);background:var(--surface);color:var(--text);padding:8px 12px;border-radius:999px;font-weight:600;font-size:13px;letter-spacing:.01em;cursor:pointer;box-shadow:0 6px 14px rgba(20,30,22,.08);transition:transform .15s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease}
   .nav-toggle:hover{transform:translateY(-1px);box-shadow:0 10px 18px rgba(20,30,22,.12)}
@@ -158,6 +162,7 @@
     body{margin:12px}
     .header{padding:14px}
     h1{font-size:24px}
+    .header-logo{width:72px;height:72px}
     .subtitle{font-size:14px}
     .summary{font-size:18px}
     .toc1 a{padding:10px 16px;font-size:16px}
@@ -168,6 +173,7 @@
   @media(max-width:640px){
     body{margin:10px}
     h1{font-size:22px}
+    .header-logo{width:60px;height:60px}
     .summary{font-size:16px}
     .category-card>.summary{font-size:16px}
     .mini-card>.summary{font-size:15px}
@@ -237,7 +243,12 @@
 <body class="theme-dark">
 
 <div class="header">
-  <h1>📘 Les Cursus & Formations</h1><br>
+  <div class="header-title-row">
+    <a href="https://imgshare.ouranos.pro/image/f2cc3e3cde3e43bc3150.bTo4d" class="header-logo-link">
+      <img src="https://imgshare.ouranos.pro/images/2026/02/14/f2cc3e3cde3e43bc3150.png" alt="Logo LSMC" class="header-logo">
+    </a>
+    <h1>Les formations & cursus du LSMC</h1>
+  </div>
   <p class="subtitle"><strong>Bienvenue à toi, <br>Ici tu trouveras toutes les informations relatives aux cursus et formations dispo ! <em>et même des fiches pratiques 👌</em></strong></p>
 </div>
 <!-- ======================= Service ======================= -->
@@ -475,16 +486,16 @@
                 <div class="summary">Visite médicale</div>
                 <div class="mini-body">
             <div class="mini-list">
-              <p>🔸S’installer en salle de consultation et ouvrir le dossier de la personne</p>
-              <p>🔸Créer l’entrée “Visite médicale” sur le panel</p>
-              <p>🔸Expliquer au patient les différents tests qu’il va suivre</p><br>
+              <p>🔸 S’installer en salle de consultation et ouvrir le dossier de la personne</p>
+              <p>🔸 Créer l’entrée “Visite médicale” sur le panel</p>
+              <p>🔸 Expliquer au patient les différents tests qu’il va suivre</p><br>
               <p>Réaliser les différents tests :<br>🔸 Test de vue (affichette de lettres, couleurs d’objets...)<br>🔸 Test d’audition (placer la personne au fond puis s’éloigner en comptant ou parlant puis recueillir la dernière chose entendue)<br>🔸 Test urinaire et sanguin (échantillons à analyser en salle d’analyse du rez de chaussée)<br>🔸 Test des paramètres vitaux (le médecin prend les signes vitaux, le patient réalise un exercice sportif, le médecin reprend les signes vitaux)</p>
               <p>Discussion avec le patient autour de sa situation actuelle (travail, vie perso etc) afin de discuter et de vérifier que tout va bien.</p>
               <p>Noter la validation ou non de la visite dans le dossier du patient (dans l’entrée patient et dans les notes en bas à droite)</p>
               <p>Validation de la visite médicale :</p>
               <p>🔸 Mettre à jour le dossier patient avec le tag VM (date)</p>
               <p>🔸 Envoi d'un message sur le répondeur de l'entreprise du patient :</p><br>
-              <blockquote>📱 LSMC | Bonjour, je vous confirme que M./Mme Prénom/Nom a bien validé sa visite médicale ce jour et est apte à travailler au sein de votre entreprise. <br>Cordialement</blockquote>
+              <blockquote><strong>📱 LSMC | Bonjour, je vous confirme que M./Mme Prénom/Nom a bien validé sa visite médicale ce jour et est apte à travailler au sein de votre entreprise. <br>Cordialement.</strong></blockquote>
               <br>
               <p>Motifs d'invalidation : état de santé très bas (mauvais, exécrable), une malnutrition importante (dans ce cas, expliquer au patient comment se nourrir et refaire un contrôle au bout d'une semaine. Si le contrôle est bon, le patient peut travailler, sinon, la VM est invalidée)</p>
               <br>
@@ -529,6 +540,28 @@
 ✅ Changement des pansements -></pre>
                     </div>
                   </blockquote>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-1">
+              <div data-accordion class="mini-card">
+                <div class="summary">Accueil nouvel arrivant</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p>🔸 S’installer en salle de consultation et créer le dossier de la personne (compléter toutes les sections possibles), vérifier le visa temporaire de la personne et noter la date de fin de validité dans les remarques du dossier.</p><br>
+                    <p>🔸 Donner les différentes informations à la personne selon les indications suivantes :</p>
+                    <p>- Guide de santé récupéré à l'aéroport</p>
+                    <p>- Bonne pratique sur l’alimentation (Manger varier pour éviter les carences)</p>
+                    <p>- Bonne pratique sur le sport (Daily routine (pompes, abdos, haltères, tractions, cardio))</p>
+                    <p>- Bonne pratique sur le stress (Événements stressants : utilisation d’armes à feu, torture animale, rouler vite, trop d’heures de service etc... | Déstressant : café, thé, chocolat (max toutes les 30min), temps hors-service, yoga etc...)</p>
+                    <p>- Contacter le LSMC ou les UHU (Application entreprise, balise d’urgence satellite)</p>
+                    <p>- Les jours d'ouverture de l'hôpital et de la clinique</p>
+                    <p>- Avantages donnés par le visa (Soins gratuits hors test psychologique pour PPA)</p><br>
+                    <p>🔸 Présenter le médecin de garde (Amandine dans la pharmacie)</p>
+                    <p>🔸 Médicaments</p>
+                    <p>- 3 antiacides, 1 antibiotique, 3 mouchoirs (à donner à la personne)</p><br>
+                    <p>- Les médicaments sont gratuits si la personne vient en chercher un lors d’un besoin, un stock ne pourra pas être fourni gratuitement</p>
+                  </div>
                 </div>
               </div>
             </div>
@@ -855,6 +888,63 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
                     <p>🔸Garer le camion de pompiers</p>
                     <p>🔸Reconnaissance du foyer</p>
                     <p>🔸Extinction du foyer (lance/extincteur)</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="card-row row-1">
+              <div data-accordion class="mini-card">
+                <div class="summary">Formation Pompier Volontaire</div>
+                <div class="mini-body">
+                  <div class="mini-list">
+                    <p class="sub-title"><strong>👕 Tenue Obligatoire</strong></p>
+                    <p>Équipement complet de protection de la tête aux pieds (tenue anti-feu, casque, gants, bottes, etc.).</p>
+                    <p>Objectif : éviter toute brûlure corporelle.</p><br>
+                    <p class="sub-title"><strong>🧾 Pré-requis</strong></p>
+                    <p>🔸Permis poids lourd obligatoire pour tout gardien du feu.</p>
+                    <p>🔸Capacité à conduire et manœuvrer un camion-citerne en intervention.</p><br>
+                    <p class="sub-title"><strong>🚒 Matériel & Équipement</strong></p>
+                    <p>Camions de pompier prêtés par d’autres casernes.</p>
+                    <p>Chaque camion est :</p>
+                    <p>🔸Équipé de 4 lances à eau.</p>
+                    <p>🔸Opéré par une équipe de 5 personnes.</p>
+                    <p>🔸Doté d’une radio d’opération intégrée (utilisation obligatoire).</p><br>
+                    <p class="sub-title"><strong>📻 Communication</strong></p>
+                    <p>Mise en place d’un réseau radio opérationnel.</p>
+                    <p>Communication constante pour :</p>
+                    <p>🔸Chaque progression.</p>
+                    <p>🔸Toute situation imprévue.</p>
+                    <p>🔸Ordres de repli ou de réorganisation.</p><br>
+                    <p class="sub-title"><strong>🔍 Procédure sur le terrain</strong></p>
+                    <p>🔸Évaluation initiale : Analyser la situation à l’arrivée.</p>
+                    <p>Identifier :</p>
+                    <p>🔸Le foyer principal.</p>
+                    <p>🔸Les éventuels foyers secondaires ou braises.</p>
+                    <p>🔸Les zones à risque (vents, végétation sèche, obstacles, etc.).</p>
+                    <p>Déplacement & Coordination</p>
+                    <p>🔸Avancer en synchronisation si plusieurs camions.</p>
+                    <p>🔸Vérifier constamment :</p>
+                    <p>🔸Présence de flammes soudaines.</p>
+                    <p>🔸Risque d’encerclement par le feu.</p>
+                    <p>Stratégie d’attaque</p>
+                    <p>🔸Progression en cône (formation en éventail).</p>
+                    <p>🔸Disposition des lances :</p>
+                    <p>🔸2 à droite du camion.</p>
+                    <p>🔸2 à gauche.</p>
+                    <p>🔸Ne jamais croiser les flux d’eau.</p>
+                    <p>Ciblage :</p>
+                    <p>🔸ise la base des flammes.</p>
+                    <p>🔸Ne jamais viser un collègue.</p><br>
+                    <p class="sub-title"><strong>🚨 Rôle du Gardien du feu</strong></p>
+                    <p>Reste à bord du véhicule durant toute l'opération.</p>
+                    <p>Objectif : pouvoir manœuvrer rapidement si besoin (notamment en recul).</p>
+                    <p>Responsable de :</p>
+                    <p>🔸Donner l’ordre de repli si la situation devient incontrôlable.</p>
+                    <p>🔸Évacuation sur décision du Team Leader.</p><br>
+                    <p class="sub-title"><strong>⚠️ Principes de sécurité</strong></p>
+                    <p>🔸Ne jamais agir dans la précipitation.</p>
+                    <p>🔸Prioriser la sécurité de l’équipe en toute circonstance.</p>
+                    <p>🔸Maintenir vigilance et sang-froid à tout moment.</p>
                   </div>
                 </div>
               </div>
@@ -1190,7 +1280,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
               <p>🔸 Chaque médecin est libre de la manière dont il mène ses séances, mais des points d’attention sont attendus.</p>
               <p>🔸 Créer une entrée sur le dossier du patient.</p>
               <br>
-              <p class="sub-title"><strong>Mener une séance psy "classique"</strong></p>
+              <p class="sub-title"><strong>Mener une séance psy "classique" 🎖️</strong></p>
               <p>🔸 Mise en confiance du patient pour que celui-ci puisse exprimer son ressenti/ses souffrances sans filtres.</p>
               <p>🔸 Poser des questions ouvertes pour laisser le patient s’exprimer.</p>
               <p>🔸 Proposer des conseils au patient en fonction du sujet, essayer, s’il en a besoin, de ne pas le laisser sans réponse.</p>
@@ -1198,7 +1288,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
               <p>🔸 Compléter le dossier du patient en entrée Consultation psy, avec le plus d'infos pertinentes possible.</p>
               <p>🔸 Si la séance a un lien avec un dépôt de plainte, compléter et transmettre le certificat psychologique au patient ou à son avocat..</p>
               <br>
-              <p class="sub-title"><strong>Utilisation d'une arme et enclenchement du protocole administratif</strong></p>
+              <p class="sub-title"><strong>Utilisation d'une arme et enclenchement du protocole administratif 🎖️</strong></p>
               <p><strong>Niveau 1</strong></p>
               <p>🔸 Faire un check complet de l'état de santé physique du patient (tension comprise).</p>
               <p>🔸 Commencer un échange sur les événements qui ont mené à l'enclenchement du protocole administratif. Déjà confronté à cette situation ?</p>
@@ -1211,7 +1301,7 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
               <p>🔸 Transmettre le certificat psychologique complété à l'interlocuteur chargé de l'affaire.</p>
               <p>🔸 Ne pas oublier de mentionner s'il est nécessaire de suspendre le PPA ou d'arrêter la personne.</p>
               <br>
-              <p class="sub-title"><strong>Désintox</strong></p>
+              <p class="sub-title"><strong>Désintox 🎖️</strong></p>
               <p>🔸 Comprendre d’où vient la dépendance.</p>
               <p>🔸 Conseils pour mieux gérer la situation.</p>
               <p>🔸 Réduire progressivement la consommation, jusqu’à ce qu’elle soit nulle. S’adapter à la progression du patient.</p>
@@ -1220,7 +1310,19 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
               <p>🔸 Substitution médicamenteuse en fonction des addictions (nalméfène, opioïdes, benzodiazépine etc…).</p>
               <p>🔸 Traitement médical des potentiels symptômes de manque.</p>
               <p>🔸 Suivi psychologique régulier et prévention d’éventuelles rechutes.</p>
-               <br>
+              <br><br>
+              <p>===============================</p>
+              <p><strong>Certification psychologie non nécessaire</strong></p>
+              <p>===============================</p>
+              <p><em>Les séances ci-dessous sont réalisables par un médecin non certifié "Psychologie" mais ayant reçu et validé une formation spécifique.</em></p>
+              <br>
+              <p class="sub-title"><strong>Certificat d'évaluation psychologique</strong></p>
+              <p>Lorsqu'un patient porte plainte, il pourra lui être proposé de prendre rdv pour avoir une évaluation psychologique auprès d'un médecin</p>
+              <p>🔸 Accompagner le patient en salle de consultation psy</p>
+              <p>🔸 Discuter avec lui pour comprendre le niveau d'impact psychologie qu'il présente et le rassurer.</p>
+              <p>🔸 Eviter de porter un jugement mais privilégier une écoute douce et attentive.</p>
+              <p>🔸 Remplir le certificat psychologique disponible dans <strong>🗒️ - Documents administratifs</strong>, laisser une copie dans le dossier et envoyer un exemplaire au patient.</p>
+              <br>
               <p class="sub-title"><strong>Mal être léger</strong></p>
               <p>Une personne se présente en disant qu'elle se sent très stressée</p>
               <p>🔸 Aller en salle psy et prendre sa tension</p>
@@ -1231,6 +1333,31 @@ Photo des signes distinctif apparents de la personne en blouse (tatouages, cicat
               <p>🔸 Prescription d'un antidépresseur. (Maximum 2 par mois) Si la limite des deux antidépresseurs est dépassée prescrire des ITT.</p>
               <p>🔸 Vérifier à ce que l’antidépresseur soit consommé directement.</p>
               <p>🔸 Proposition d'un suivi régulier avec un psychologue.</p>
+              <br>
+              <p class="sub-title"><strong>Test psychologique pour le PPA</strong></p>
+              <p>Accompagner le patient en salle de consultation psy à l'hôpital ou dans le bureau à la clinique</p>
+              <p>🔸 Voir avec le patient les raisons qui le poussent à demander un permis de port d'armes.</p>
+              <p>🔸 Comprendre comment le patient fonctionne en posant des questions ouvertes sur la gestion des émotions, les armes à feu et son passif lié à l’armement</p>
+              <p>🔸 Le mettre dans différente situation de stress, de colère ou de protection afin de savoir comment il y réagirait. Et voir s’il est apte à porter une arme.</p>
+              <p>🔸 Notamment dans le cadre d'un refus, remplir un dossier sur le panel avec les raisons du refus.</p>
+              <p>🔸 Noter l'obtention du PSY PPA dans la catégorie Autre du dossier médicale → Exemple : Psy PPA 30/03/2025</p><br>
+              <blockquote>Quelques exemples de mise en situation (à adapter si civil ou force de l'ordre) :
+<br><br>
+📍Mise en situation 1 – Agression verbale<br>
+Vous êtes à une station-service. Un inconnu vous insulte et vous provoque sans raison. Il n'est pas armé. Que faites-vous ?
+→ Observer : maîtrise de soi, impulsivité, évitement ou confrontation, sens de la proportion.
+<br><br>
+📍Mise en situation 2 – Conflit avec un proche<br>
+Un ami proche emprunte votre voiture sans vous demander et cause un accident. Il vous cache les dégâts. Vous le découvrez plus tard.
+→ Observer : gestion de la trahison, esprit de vengeance, pardon, communication.
+<br><br>
+📍Mise en situation 3 – Enfant en danger<br>
+Vous êtes témoin d’une agression dans un parc. Un adulte semble secouer violemment un enfant. Vous êtes armé (hypothétiquement). Que faites-vous ?
+→ Observer : discernement, intervention raisonnée, capacité à appeler les autorités, sang-froid.
+<br><br>
+📍Mise en situation 4 – Arme en main<br>
+Vous rentrez chez vous et entendez du bruit à l'intérieur. Vous pensez à un cambriolage. Vous avez votre arme sur vous. Que faites-vous ?
+→ Observer : réflexes, stratégie d'approche, usage raisonné de l’arme, contact avec les forces de l’ordre.</blockquote>
               <br>
             </div>
           </div>
