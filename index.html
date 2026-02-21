@@ -26,6 +26,15 @@
   img{max-width:100%;height:auto}
   h1{margin:0 0 6px;font-size:28px;font-family:"IBM Plex Serif","Georgia",serif}
   .subtitle{margin:0 0 14px;color:var(--muted)}
+  .header-main{display:grid;grid-template-columns:minmax(0,1fr) minmax(220px,30%);gap:16px;align-items:start}
+  .header-intro .subtitle{margin:0}
+  .header-update{margin-top:0;padding-top:0;padding-left:14px;border-left:1px dashed var(--border)}
+  .header-update-label{display:block;margin:0 0 4px;font-weight:700;color:var(--text);font-size:12px;text-align:right}
+  .header-update-list{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:4px}
+  .header-update-item{display:flex;justify-content:flex-end;align-items:baseline;gap:8px;font-size:12px}
+  .header-update-text{color:var(--muted);text-align:right}
+  .header-update-date{font-variant-numeric:tabular-nums;white-space:nowrap;color:var(--text);opacity:.85}
+  .header-update-spacer{height:10px}
   .header{padding:18px;border-radius:14px;background:var(--header-bg);border:1px solid var(--border);box-shadow:var(--shadow)}
   .header-title-row{display:flex;flex-direction:row;align-items:center;gap:10px;margin-bottom:8px}
   .header-title-row h1{margin:0}
@@ -161,6 +170,8 @@
   @media(max-width:900px){
     body{margin:12px}
     .header{padding:14px}
+    .header-main{grid-template-columns:1fr;gap:10px}
+    .header-update{padding-left:0;padding-top:6px;border-left:0;border-top:1px dashed var(--border)}
     h1{font-size:24px}
     .header-logo{width:72px;height:72px}
     .subtitle{font-size:14px}
@@ -174,6 +185,8 @@
     body{margin:10px}
     h1{font-size:22px}
     .header-logo{width:60px;height:60px}
+    .header-update-item{justify-content:flex-start;flex-wrap:wrap}
+    .header-update-text{text-align:left}
     .summary{font-size:16px}
     .category-card>.summary{font-size:16px}
     .mini-card>.summary{font-size:15px}
@@ -249,7 +262,28 @@
     </a>
     <h1>Les formations & cursus du LSMC</h1>
   </div>
-  <p class="subtitle"><strong>Bienvenue à toi, <br>Ici tu trouveras toutes les informations relatives aux cursus et formations dispo ! <em>et même des fiches pratiques 👌</em></strong></p>
+  <div class="header-main">
+    <div class="header-intro">
+      <p class="subtitle"><strong>Bienvenue à toi, <br>Ici tu trouveras toutes les informations relatives aux cursus et formations dispo ! <em>et même des fiches pratiques 👌</em></strong></p>
+    </div>
+    <div class="header-update" role="note" aria-label="Dernières modifications">
+      <span class="header-update-label">✅ Mises à jour :</span>
+      <ul class="header-update-list">
+        <li class="header-update-item">
+          <span class="header-update-text">Ajout du retrait de tatouage dans "Don du sang"</span>
+          <time class="header-update-date" datetime="2026-02-21">21/02/2026</time>
+        </li>
+      </ul>
+      <div class="header-update-spacer" aria-hidden="true"></div>
+      <span class="header-update-label">⌛ À venir prochainement :</span>
+      <ul class="header-update-list">
+        <li class="header-update-item">
+          <span class="header-update-text">Refonte formation Sécurité Incendie et extincteurs -></span>
+          <time class="header-update-date" datetime="2026-02-21"><em>Contacter Emy</em></time>
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 <!-- ======================= Service ======================= -->
 <div data-accordion id="service" class="t-purple main-section">
@@ -306,7 +340,7 @@
                 <div class="mini-body">
             <div class="mini-list">
               <p>Installation<br>🔸 S’installer en salle de consultation<br>🔸 Prendre la carte de santé</p>
-              <p>Vérifier l’éligibilité<br>🔸 Alcool / Stupéfiants : 12h depuis la dernière consommation<br>🔸 Grippe : 24h<br>🔸 Anesthésie / inconscience : 24h<br>🔸 Relation sexuelle à risque : 24h<br>🔸 Tatouages / piercings : 24h</p>
+              <p>Vérifier l’éligibilité<br>🔸 Alcool / Stupéfiants : 12h depuis la dernière consommation<br>🔸 Grippe : 24h<br>🔸 Anesthésie / inconscience : 24h<br>🔸 Relation sexuelle à risque : 24h<br>🔸 Tatouages et retrait de tatouages / piercings : 24h</p>
               <p>Préparation<br>🔸 Vérifier que la personne ait bien bu et mangé.</p>
               <p>Ponction<br>🔸 Procéder à la ponction sanguine</p>
               <p>Fin<br>🔸 Remercier la personne et proposer un snack</p>
